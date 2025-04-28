@@ -14,43 +14,244 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id           String   @id @default(uuid())
-  name         String
-  class        String
-  scores       Score[]
-  email        String
-  username     String
-  password     String
-  holyname     String
-  birthday     DateTime
-  address      String
-  baptismdate  DateTime
-  baptismplace String
-  fathername   String
-  mothername   String
-  phone        Int
-  role         Role     @relation(fields: [id], references: [id])
-  roleId       String
-  createdAt    DateTime @default(now())
-  createdBy    String
+// Enum
+enum TypeOfScore {
+  oral
+  fifteenmintest
+  minitest
+  final
+}
+
+enum Conduct {
+  Excellent
+  Good
+  Average
+  Poor
+  Bad
+}
+
+enum AttendanceStatus {
+  present
+  absent
+  late
+  leave
+}
+
+// Models
+model User {
+  id           String    @id @default(uuid())
+  username     String?
+  password     String?
+  name         String?
+  email        String?
+  phone        Int?
+  birthday     DateTime?
+  address      String?
+  class        String?
+  city         String?
+  holyname     String?
+  fathername   String?
+  mothername   String?
+  baptismplace String?
+  baptismdate  String?
+  role         String?
+  role_id      String?
+  isActive     Boolean?
+  lastlogin    DateTime?
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @updatedAt
+
+  // Relations
+  userRoles   UserRole[]
+  scores      Score[]
+  attendance  Attendance[]
+  discipline  Discipline[]
+  transcripts Transcript[]
+  classusers  Classuser[]
 }
 
 model Score {
-  id        String   @id @default(uuid())
-  subject   String
-  score     Float
-  users     Users    @relation(fields: [usersId], references: [id])
-  usersId   String
-  createdAt DateTime @default(now())
+  score_id      String    @id @default(uuid())
+  user_id       String
+  subject_id    String
+  semester_id   String
+  score_type_id String
+  score         Float?
+  note          String?
+  created_at    DateTime? @default(now())
+
+  // Relations
+  user      User      @relation(fields: [user_id], references: [id])
+  subject   Subject   @relation(fields: [subject_id], references: [subject_id])
+  semester  Semester  @relation(fields: [semester_id], references: [semesterid])
+  scoreType ScoreType @relation(fields: [score_type_id], references: [score_type_id])
+}
+
+model ScoreType {
+  score_type_id String      @id @default(uuid())
+  type          TypeOfScore
+  weight        Float?
+
+  // Relations
+  scores Score[]
+}
+
+model Subject {
+  subject_id  String  @id @default(uuid())
+  subjectname String?
+  code        String?
+  description String?
+
+  // Relations
+  scores        Score[]
+  classSubjects ClassSubject[]
+}
+
+model Class {
+  class_id    String  @id @default(uuid())
+  classname   String?
+  grade_id    String
+  school_year String?
+
+  // Relations
+  classSubjects ClassSubject[]
+  classusers    Classuser[]
+  grade         Grade          @relation(fields: [grade_id], references: [grade_id])
+}
+
+model ClassSubject {
+  class_subject_id String @id @default(uuid())
+  class_id         String
+  subject_id       String
+  teacher_id       String
+
+  // Relations
+  class      Class        @relation(fields: [class_id], references: [class_id])
+  subject    Subject      @relation(fields: [subject_id], references: [subject_id])
+  discipline Discipline[]
+  attendance Attendance[]
+}
+
+model Classuser {
+  class_user_id String @id @default(uuid())
+  class_id      String
+  user_id       String
+
+  // Relations
+  class Class @relation(fields: [class_id], references: [class_id])
+  user  User  @relation(fields: [user_id], references: [id])
+}
+
+model Attendance {
+  attendance_id    String           @id @default(uuid())
+  user_id          String
+  class_subject_id String
+  attendancedate   DateTime?
+  status           AttendanceStatus
+  note             String?
+  created_at       DateTime?        @default(now())
+
+  // Relations
+  user         User         @relation(fields: [user_id], references: [id])
+  classSubject ClassSubject @relation(fields: [class_subject_id], references: [class_subject_id])
+}
+
+model Semester {
+  semesterid   String    @id @default(uuid())
+  semestername String?
+  year         Int?
+  yearid       String
+  note         String?
+  created_at   DateTime? @default(now())
+
+  // Relations
+  schoolYear  SchoolYear   @relation(fields: [yearid], references: [schoolyearid])
+  transcripts Transcript[]
+  score       Score[]
+}
+
+model SchoolYear {
+  schoolyearid String    @id @default(uuid())
+  yearname     String?
+  startdate    DateTime?
+  enddate      DateTime?
+
+  // Relations
+  semesters Semester[]
+}
+
+model Transcript {
+  transcript_id    String    @id @default(uuid())
+  user_id          String
+  semester_id      String
+  gpa              Float?
+  conduct          Conduct
+  attendance_score Float?
+  discipline_score Float?
+  created_at       DateTime? @default(now())
+
+  // Relations
+  user     User     @relation(fields: [user_id], references: [id])
+  semester Semester @relation(fields: [semester_id], references: [semesterid])
+}
+
+model Discipline {
+  discipline_id    String    @id @default(uuid())
+  user_id          String
+  severity_id      String
+  class_subject_id String
+  date             DateTime?
+  note             String?
+  created_at       DateTime? @default(now())
+
+  // Relations
+  user         User               @relation(fields: [user_id], references: [id])
+  severity     DisciplineSeverity @relation(fields: [severity_id], references: [severity_id])
+  classSubject ClassSubject       @relation(fields: [class_subject_id], references: [class_subject_id])
+}
+
+model DisciplineSeverity {
+  severity_id     String    @id @default(uuid())
+  name            String?
+  point_deduction Float?
+  description     String?
+  created_at      DateTime? @default(now())
+  updated_at      DateTime? @updatedAt
+
+  // Relations
+  disciplines Discipline[]
 }
 
 model Role {
-  id          String   @id @default(uuid())
-  rolename    String
-  description Float
-  isactive    Boolean
-  createdBy   String
-  createdAt   DateTime @default(now())
-  users       Users[]
+  roleid          String    @id @default(uuid())
+  rolename        String?
+  roledescription String?
+  isactive        Boolean?
+  created_at      DateTime? @default(now())
+  updated_at      DateTime? @updatedAt
+
+  // Relations
+  userRoles UserRole[]
+}
+
+model UserRole {
+  userroleid String @id @default(uuid())
+  userid     String
+  roleid     String
+
+  // Relations
+  user User @relation(fields: [userid], references: [id])
+  role Role @relation(fields: [roleid], references: [roleid])
+}
+
+model Grade {
+  grade_id         String    @id @default(uuid())
+  gradename        String?
+  gradedescription String?
+  isactive         Boolean?
+  created_at       DateTime? @default(now())
+  updated_at       DateTime? @updatedAt
+
+  // Relations
+  class Class[]
 }

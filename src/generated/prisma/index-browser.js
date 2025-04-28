@@ -117,41 +117,152 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UsersScalarFieldEnum = {
+exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  class: 'class',
-  email: 'email',
   username: 'username',
   password: 'password',
-  holyname: 'holyname',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
   birthday: 'birthday',
   address: 'address',
-  baptismdate: 'baptismdate',
-  baptismplace: 'baptismplace',
+  class: 'class',
+  city: 'city',
+  holyname: 'holyname',
   fathername: 'fathername',
   mothername: 'mothername',
-  phone: 'phone',
-  roleId: 'roleId',
-  createdAt: 'createdAt',
-  createdBy: 'createdBy'
+  baptismplace: 'baptismplace',
+  baptismdate: 'baptismdate',
+  role: 'role',
+  role_id: 'role_id',
+  isActive: 'isActive',
+  lastlogin: 'lastlogin',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.ScoreScalarFieldEnum = {
-  id: 'id',
-  subject: 'subject',
+  score_id: 'score_id',
+  user_id: 'user_id',
+  subject_id: 'subject_id',
+  semester_id: 'semester_id',
+  score_type_id: 'score_type_id',
   score: 'score',
-  usersId: 'usersId',
-  createdAt: 'createdAt'
+  note: 'note',
+  created_at: 'created_at'
+};
+
+exports.Prisma.ScoreTypeScalarFieldEnum = {
+  score_type_id: 'score_type_id',
+  type: 'type',
+  weight: 'weight'
+};
+
+exports.Prisma.SubjectScalarFieldEnum = {
+  subject_id: 'subject_id',
+  subjectname: 'subjectname',
+  code: 'code',
+  description: 'description'
+};
+
+exports.Prisma.ClassScalarFieldEnum = {
+  class_id: 'class_id',
+  classname: 'classname',
+  grade_id: 'grade_id',
+  school_year: 'school_year'
+};
+
+exports.Prisma.ClassSubjectScalarFieldEnum = {
+  class_subject_id: 'class_subject_id',
+  class_id: 'class_id',
+  subject_id: 'subject_id',
+  teacher_id: 'teacher_id'
+};
+
+exports.Prisma.ClassuserScalarFieldEnum = {
+  class_user_id: 'class_user_id',
+  class_id: 'class_id',
+  user_id: 'user_id'
+};
+
+exports.Prisma.AttendanceScalarFieldEnum = {
+  attendance_id: 'attendance_id',
+  user_id: 'user_id',
+  class_subject_id: 'class_subject_id',
+  attendancedate: 'attendancedate',
+  status: 'status',
+  note: 'note',
+  created_at: 'created_at'
+};
+
+exports.Prisma.SemesterScalarFieldEnum = {
+  semesterid: 'semesterid',
+  semestername: 'semestername',
+  year: 'year',
+  yearid: 'yearid',
+  note: 'note',
+  created_at: 'created_at'
+};
+
+exports.Prisma.SchoolYearScalarFieldEnum = {
+  schoolyearid: 'schoolyearid',
+  yearname: 'yearname',
+  startdate: 'startdate',
+  enddate: 'enddate'
+};
+
+exports.Prisma.TranscriptScalarFieldEnum = {
+  transcript_id: 'transcript_id',
+  user_id: 'user_id',
+  semester_id: 'semester_id',
+  gpa: 'gpa',
+  conduct: 'conduct',
+  attendance_score: 'attendance_score',
+  discipline_score: 'discipline_score',
+  created_at: 'created_at'
+};
+
+exports.Prisma.DisciplineScalarFieldEnum = {
+  discipline_id: 'discipline_id',
+  user_id: 'user_id',
+  severity_id: 'severity_id',
+  class_subject_id: 'class_subject_id',
+  date: 'date',
+  note: 'note',
+  created_at: 'created_at'
+};
+
+exports.Prisma.DisciplineSeverityScalarFieldEnum = {
+  severity_id: 'severity_id',
+  name: 'name',
+  point_deduction: 'point_deduction',
+  description: 'description',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.RoleScalarFieldEnum = {
-  id: 'id',
+  roleid: 'roleid',
   rolename: 'rolename',
-  description: 'description',
+  roledescription: 'roledescription',
   isactive: 'isactive',
-  createdBy: 'createdBy',
-  createdAt: 'createdAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.UserRoleScalarFieldEnum = {
+  userroleid: 'userroleid',
+  userid: 'userid',
+  roleid: 'roleid'
+};
+
+exports.Prisma.GradeScalarFieldEnum = {
+  grade_id: 'grade_id',
+  gradename: 'gradename',
+  gradedescription: 'gradedescription',
+  isactive: 'isactive',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.SortOrder = {
@@ -164,11 +275,49 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.TypeOfScore = exports.$Enums.TypeOfScore = {
+  oral: 'oral',
+  fifteenmintest: 'fifteenmintest',
+  minitest: 'minitest',
+  final: 'final'
+};
+
+exports.AttendanceStatus = exports.$Enums.AttendanceStatus = {
+  present: 'present',
+  absent: 'absent',
+  late: 'late',
+  leave: 'leave'
+};
+
+exports.Conduct = exports.$Enums.Conduct = {
+  Excellent: 'Excellent',
+  Good: 'Good',
+  Average: 'Average',
+  Poor: 'Poor',
+  Bad: 'Bad'
+};
 
 exports.Prisma.ModelName = {
-  Users: 'Users',
+  User: 'User',
   Score: 'Score',
-  Role: 'Role'
+  ScoreType: 'ScoreType',
+  Subject: 'Subject',
+  Class: 'Class',
+  ClassSubject: 'ClassSubject',
+  Classuser: 'Classuser',
+  Attendance: 'Attendance',
+  Semester: 'Semester',
+  SchoolYear: 'SchoolYear',
+  Transcript: 'Transcript',
+  Discipline: 'Discipline',
+  DisciplineSeverity: 'DisciplineSeverity',
+  Role: 'Role',
+  UserRole: 'UserRole',
+  Grade: 'Grade'
 };
 
 /**
