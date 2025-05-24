@@ -302,7 +302,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\nextjs\\churchity-app\\src\\generated\\prisma",
+      "value": "D:\\personal_project\\churchity-app\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -316,12 +316,12 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\nextjs\\churchity-app\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\personal_project\\churchity-app\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
     "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "schemaEnvPath": "../../../prisma/.env"
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.6.0",
