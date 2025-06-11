@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Space, Table, Badge, Flex, Button, Divider } from "antd";
 import type { TableProps } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import InteractiveGradeForm from "@/components/form/InteractiveGradeForm";
 
 interface DataType {
@@ -35,7 +36,7 @@ const columns: TableProps<DataType>["columns"] = [
     key: "created",
   },
   {
-    title: "isActive",
+    title: "Status",
     dataIndex: "isActive",
     key: "isActive",
     render: (isActive) => (
@@ -48,46 +49,68 @@ const columns: TableProps<DataType>["columns"] = [
     ),
   },
   {
-    title: "Action",
+    title: "",
     key: "action",
     render: () => (
-      <Space size="middle">
-        <a>Invite</a>
-        <a>Delete</a>
+      <Space
+        size="middle"
+        style={{
+          cursor: "pointer",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
+        <a>
+          <EditOutlined />
+        </a>
+        <a>
+          <DeleteOutlined />
+        </a>
       </Space>
     ),
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: "1",
-    name: "John Brown",
-    description: "New York No. 1 Lake Park",
-    isActive: 1,
-    createdBy: "admin",
-    created: "6/10/2025",
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    description: "London No. 1 Lake Park",
-    isActive: 1,
-    createdBy: "admin",
-    created: "6/10/2025",
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    description: "Sydney No. 1 Lake Park",
-    isActive: 1,
-    createdBy: "admin",
-    created: "6/10/2025",
-  },
-];
-
 export default function InteractiveGradeTable() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [data, setData] = useState<DataType[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchGrades = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:3000/api/grade");
+      const grades = await response.json();
+      // Map API data to DataType
+      interface GradeApiType {
+        id?: string;
+        grade_id?: string;
+        gradename: string;
+        gradedescription: string;
+        isactive: boolean | number;
+        createdBy?: string;
+        created?: string;
+      }
+      const mapped = grades.map((g: GradeApiType) => ({
+        key: g.id || g.grade_id || g.gradename, // adjust according to your API
+        name: g.gradename,
+        description: g.gradedescription,
+        isActive: g.isactive ? 1 : 0,
+        createdBy: g.createdBy || "admin", // adjust if you have this field
+        created: g.created || new Date().toLocaleDateString(), // adjust if you have this field
+      }));
+      setData(mapped);
+    } catch {
+      // Optionally handle error
+      setData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchGrades();
+  }, []);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -103,7 +126,11 @@ export default function InteractiveGradeTable() {
 
   return (
     <div>
-      <Flex justify="space-between" align="center" style={{ marginBottom: "16px" }}>
+      <Flex
+        justify="space-between"
+        align="center"
+        style={{ marginBottom: "16px" }}
+      >
         <h1>Grades</h1>
         <Flex gap="8px">
           <Button type="primary" onClick={showModal}>
@@ -115,13 +142,15 @@ export default function InteractiveGradeTable() {
         </Flex>
       </Flex>
       {isModalOpen && (
-        <InteractiveGradeForm
-          handleOk={handleOk}
-          handleCancel={handleCancel}
-        />
+        <InteractiveGradeForm handleOk={handleOk} handleCancel={handleCancel} />
       )}
       <Divider />
-      <Table<DataType> columns={columns} dataSource={data} pagination={{pageSize: 10}} />
+      <Table<DataType>
+        columns={columns}
+        dataSource={data}
+        loading={loading}
+        pagination={{ pageSize: 10 }}
+      />
     </div>
   );
 }

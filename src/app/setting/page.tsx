@@ -40,7 +40,7 @@ export default function SettingsPage() {
         style={{ width: "100%" }}
         tabList={tabListNoTitle}
         activeTabKey={activeTabKey}
-        tabBarExtraContent={<a href="#">More</a>}
+        //tabBarExtraContent={<a href="#">More</a>}
         onTabChange={onTab2Change}
         tabProps={{
           size: "middle",

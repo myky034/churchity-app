@@ -24,9 +24,9 @@ export default function InteractiveGradeForm({
     try {
       const response = await fetch("http://localhost:3000/api/grade", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
         body: JSON.stringify(values),
       });
 
@@ -35,6 +35,8 @@ export default function InteractiveGradeForm({
       }
 
       message.success("Grade created successfully!");
+      const data = await response.json();
+      console.log(data);
       handleOk();
     } catch (error) {
       message.error("Failed to create grade");
@@ -90,7 +92,7 @@ export default function InteractiveGradeForm({
           <Button
             type="primary"
             htmlType="submit"
-            onClick={handleOk}
+            //onClick={handleOk}
             loading={loading}
           >
             Submit

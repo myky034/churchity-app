@@ -27,15 +27,28 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+
+    const data: {
+      gradename: string;
+      gradedescription: string;
+      isactive: boolean;
+      class?: {
+        connect: { class_id: string }[];
+      };
+    } = {
+      gradename: body.gradename,
+      gradedescription: body.gradedescription,
+      isactive: body.isactive,
+    };
+
+    if (Array.isArray(body.class) && body.class.length > 0) {
+      data.class = {
+        connect: body.class.map((classId: string) => ({ class_id: classId })),
+      };
+    }
+
     const newGrade = await prisma.grade.create({
-      data: {
-        gradename: body.gradename,
-        gradedescription: body.gradedescription,
-        isactive: body.isactive,
-        class: {
-          connect: body.class.map((classId: string) => ({ class_id: classId })),
-        },
-      },
+      data,
       include: {
         class: true,
       },

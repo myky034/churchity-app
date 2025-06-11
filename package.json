@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@prisma/client": "^6.6.0",
     "antd": "^5.25.2",
     "antd-img-crop": "^4.25.0",
