@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import { Card, Divider } from "antd";
-import InteractiveGradeTable from "@/components/table/InteractiveGradeTable";
+import GradeTable from "@/components/table/GradeTable";
 
 const tabListNoTitle = [
   {
@@ -20,7 +20,7 @@ const tabListNoTitle = [
 ];
 
 const contentListNoTitle: Record<string, React.ReactNode> = {
-  grade: <InteractiveGradeTable />,
+  grade: <GradeTable />,
   class: <p>app content</p>,
   role: <p>project content</p>,
 };

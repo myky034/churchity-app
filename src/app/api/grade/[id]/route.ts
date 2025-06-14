@@ -34,9 +34,9 @@ export async function GET(request: Request, { params }: Params) {
 }
 
 // Put (update) a grade by ID
-export async function PUT(request: Request, { params }: Params) {
+export async function PUT(request: Request, context: { params: { id: string } }) {
   const prisma = new PrismaClient();
-  const { id } = params;
+  const { id } = context.params;
   try {
     const body = await request.json();
     const updatedGrade = await prisma.grade.update({
@@ -46,7 +46,9 @@ export async function PUT(request: Request, { params }: Params) {
         gradedescription: body.gradedescription,
         isactive: body.isactive,
         class: {
-          connect: body.class.map((classId: string) => ({ class_id: classId })),
+          connect: Array.isArray(body.class)
+            ? body.class.map((classId: string) => ({ class_id: classId }))
+            : [],
         },
       },
       include: {
