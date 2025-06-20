@@ -47,15 +47,15 @@ model User {
   phone           Int?
   birthday        DateTime?
   address         String?
-  class           String?
+  class           String
   city            String?
   holyname        String?
   fathername      String?
   mothername      String?
   baptismplace    String?
   baptismdate     String?
-  role            String?
-  role_id         String?
+  role            String
+  role_id         String
   isActive        Boolean?
   lastlogin       DateTime?
   created_at      DateTime? @default(now())
@@ -109,9 +109,15 @@ model Subject {
 
 model Class {
   class_id        String     @id @default(uuid())
-  classname       String?
+  classname       String
   grade_id        String
-  school_year     String?
+
+  // New columns
+  created         DateTime?  @default(now())
+  createdBy       String?
+  updated         DateTime?  @updatedAt
+  updatedBy       String?
+  isActive        Boolean?   @default(true)
 
   // Relations
   classSubjects   ClassSubject[]
@@ -246,7 +252,7 @@ model UserRole {
 
 model Grade {
   grade_id         String     @id @default(uuid())
-  gradename        String?
+  gradename        String
   gradedescription String?
   isactive         Boolean?
   created_at       DateTime?  @default(now())

@@ -1,0 +1,359 @@
+import React, { useEffect, useCallback } from "react";
+import {
+  Flex,
+  Button,
+  Divider,
+  Table,
+  Badge,
+  Space,
+  Popconfirm,
+  message,
+} from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import ClassModalForm from "../modal/ClassModalForm";
+
+interface Class {
+  id: string;
+  name: string;
+  grade: string;
+  grade_id?: string;
+  createdBy: string;
+  created: string;
+  updated: string;
+  updatedBy: string;
+  isActive: boolean;
+}
+
+const ClassTable: React.FC = () => {
+  const [classes, setClasses] = React.useState<Class[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [modalVisible, setModalVisible] = React.useState<boolean>(false);
+  const [mode, setMode] = React.useState<"create" | "edit">("create");
+  const [editingClass, setEditingClass] = React.useState<Class | null>(null);
+
+  const fetchClasses = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("http://localhost:3000/api/classs");
+      const data = await res.json();
+      setClasses(mapClasses(data));
+    } catch {
+      message.error("Failed to load classes");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchClasses();
+  }, [fetchClasses]);
+
+  const handleCreate = () => {
+    setMode("create");
+    setEditingClass(null);
+    setModalVisible(true);
+  };
+
+  const handleEdit = (record: Class) => {
+    setMode("edit");
+    setEditingClass(record);
+    setModalVisible(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    setLoading(true);
+    try {
+      await fetch(`http://localhost:3000/api/classs/${id}`, {
+        method: "DELETE",
+      });
+      await fetchClasses();
+      message.success("Class deleted");
+    } catch {
+      message.error("Delete failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async (values: {
+    classname: string;
+    grade: string;
+    isactive: boolean;
+  }) => {
+    setLoading(true);
+    try {
+      const url =
+        mode === "create"
+          ? "http://localhost:3000/api/classs"
+          : `http://localhost:3000/api/classs/${editingClass?.id}`;
+      const method = mode === "create" ? "POST" : "PUT";
+      await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          classname: values.classname,
+          grade_id: values.grade,
+          isActive: values.isactive,
+        }),
+      });
+      await fetchClasses();
+      message.success(mode === "create" ? "Class created" : "Class updated");
+      setModalVisible(false);
+      setEditingClass(null);
+    } catch {
+      message.error("Submit failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const columns = [
+    {
+      title: "Class name",
+      dataIndex: "name",
+      key: "name",
+      render: (text: string) => <a>{text}</a>,
+    },
+    {
+      title: "Grade",
+      dataIndex: "grade",
+      key: "grade",
+    },
+    {
+      title: "Created By",
+      dataIndex: "createdBy",
+      key: "createdBy",
+    },
+    {
+      title: "Created",
+      dataIndex: "created",
+      key: "created",
+    },
+    {
+      title: "Updated",
+      dataIndex: "updated",
+      key: "updated",
+    },
+    {
+      title: "Updated By",
+      dataIndex: "updatedBy",
+      key: "updatedBy",
+    },
+    {
+      title: "Status",
+      dataIndex: "isActive",
+      key: "isActive",
+      render: (isActive: number) => (
+        <span>
+          <Badge
+            status={isActive ? "success" : "default"}
+            text={isActive ? "Active" : "Inactive"}
+          />
+        </span>
+      ),
+    },
+    {
+      title: "",
+      key: "action",
+      render: (_: unknown, record: Class) => (
+        <Space
+          size="middle"
+          style={{
+            cursor: "pointer",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <a onClick={() => handleEdit(record)}>
+            <EditOutlined />
+          </a>
+          <Popconfirm
+            title="Are you sure delete this class?"
+            okText="Delete"
+            okType="danger"
+            cancelText="Cancel"
+            onConfirm={() => handleDelete(record.id)}
+          >
+            <a>
+              <DeleteOutlined />
+            </a>
+          </Popconfirm>
+        </Space>
+      ),
+    },
+  ];
+
+  const mapClasses = (data: Record<string, unknown>[]): Class[] =>
+    data.map((g) => {
+      // Format created and updated dates
+      const createdRaw = g.created as string;
+      const updatedRaw = g.updated as string;
+      const created = createdRaw
+        ? new Date(createdRaw).toLocaleDateString("en-GB")
+        : new Date().toLocaleDateString("en-GB");
+      const updated = updatedRaw
+        ? new Date(updatedRaw).toLocaleDateString("en-GB")
+        : "";
+      const grade_id =
+        (typeof g.grade_id === "string" && g.grade_id) ||
+        (g.grade && typeof g.grade === "object" && "grade_id" in g.grade
+          ? (g.grade as { grade_id?: string }).grade_id
+          : "");
+
+      return {
+        id:
+          (g.id as string) || (g.class_id as string) || (g.classname as string),
+        name: g.classname as string,
+        grade:
+          (g.grade && typeof g.grade === "object" && "gradename" in g.grade
+            ? (g.grade as { gradename?: string }).gradename
+            : undefined) ||
+          (g as { gradename?: string }).gradename ||
+          grade_id ||
+          "",
+        grade_id,
+        isActive: typeof g.isActive === "boolean" ? g.isActive : !!g.isactive,
+        createdBy: (g.createdBy as string) || "admin",
+        created,
+        updated,
+        updatedBy: (g.updatedBy as string) || "",
+      };
+    });
+
+  // const showModal = () => {
+  //   setMode("create");
+  //   setEditingClass(null);
+  //   //form.resetFields();
+  //   setModalVisible(true);
+  // };
+
+  // const handleModalClose = () => {
+  //   setModalVisible(false);
+  //   setEditingClass(null);
+  // };
+
+  // const handleSubmitClass = async (values: {
+  //   classname: string;
+  //   grade: string;
+  //   isactive: boolean;
+  // }) => {
+  //   setLoading(true);
+  //   try {
+  //     const url =
+  //       mode === "create"
+  //         ? "http://localhost:3000/api/classs"
+  //         : `http://localhost:3000/api/classs/${editingClass?.id}`;
+  //     const method = mode === "create" ? "POST" : "PUT";
+  //     await fetch(url, {
+  //       method,
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         classname: values.classname,
+  //         grade_id: values.grade,
+  //         isActive: values.isactive,
+  //       }),
+  //     });
+  //     await fetchClasses();
+  //     message.success(
+  //       mode === "create"
+  //         ? "Class created successfully!"
+  //         : "Class updated successfully!"
+  //     );
+  //     setModalVisible(false);
+  //     //setEditingClass(null);
+  //   } catch (error) {
+  //     console.error("Error creating class:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const handleFinishFailed = () => {
+  //   console.error("Failed to create class");
+  //   message.error("Failed to create class");
+  // };
+
+  // const handleDeleteClass = async (id: string) => {
+  //   setLoading(true);
+  //   try {
+  //     await fetch(`http://localhost:3000/api/classs/${id}`, {
+  //       method: "DELETE",
+  //     });
+  //     await fetchClasses(); // Refresh the list after deletion
+  //     message.success("Class deleted successfully!");
+  //   } catch (error) {
+  //     console.error("Error deleting class:", error);
+  //     message.error("Failed to delete class");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const fetchClasses = React.useCallback(async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await fetch("http://localhost:3000/api/classs", {
+  //       method: "GET",
+  //     });
+  //     const data = await response.json();
+  //     // Map API data to DataType
+  //     const mapped = mapClasses(data);
+  //     if (!Array.isArray(mapped)) {
+  //       throw new Error("Mapped data is not an array");
+  //     }
+  //     setClasses(mapped);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.error("Error fetching classes:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   fetchClasses();
+  // }, [fetchClasses]);
+
+  return (
+    <div>
+      <Flex
+        justify="space-between"
+        align="center"
+        style={{ marginBottom: "16px" }}
+      >
+        <h1>Class</h1>
+        <Flex gap="8px">
+          <Button type="primary" onClick={handleCreate}>
+            Create Class
+          </Button>
+        </Flex>
+      </Flex>
+      <ClassModalForm
+        visible={modalVisible}
+        mode={mode}
+        onClose={() => {
+          setModalVisible(false);
+          setEditingClass(null);
+        }}
+        onFinish={handleSubmit}
+        loading={loading}
+        //onFinishFailed={handleFinishFailed}
+        initialValues={{
+          classname: editingClass ? editingClass.name : "",
+          grade: editingClass ? editingClass.grade_id ?? "" : "",
+          isactive: editingClass ? editingClass.isActive : false,
+        }}
+      />
+      <Divider />
+      <Table
+        rowKey="id"
+        columns={columns}
+        dataSource={classes}
+        loading={loading}
+        pagination={{ pageSize: 10 }}
+      />
+    </div>
+  );
+};
+
+export default ClassTable;

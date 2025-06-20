@@ -51,9 +51,6 @@ export async function PUT(request: Request, context: { params: { id: string } })
             : [],
         },
       },
-      include: {
-        class: true,
-      },
     });
     return NextResponse.json(updatedGrade);
   } catch (error) {

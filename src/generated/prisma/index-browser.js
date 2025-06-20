@@ -169,7 +169,11 @@ exports.Prisma.ClassScalarFieldEnum = {
   class_id: 'class_id',
   classname: 'classname',
   grade_id: 'grade_id',
-  school_year: 'school_year'
+  created: 'created',
+  createdBy: 'createdBy',
+  updated: 'updated',
+  updatedBy: 'updatedBy',
+  isActive: 'isActive'
 };
 
 exports.Prisma.ClassSubjectScalarFieldEnum = {

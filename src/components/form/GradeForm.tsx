@@ -29,7 +29,8 @@ const GradeForm: React.FC<GradeFormProps> = ({
   return (
     <div>
       <Form
-        name="basic"
+        name="gradeform"
+        layout="horizontal"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
@@ -38,13 +39,15 @@ const GradeForm: React.FC<GradeFormProps> = ({
         onFinishFailed={onFinishFailed}
         autoComplete="off"
         form={form}
+        variant={"outlined"}
+        labelAlign="left"
       >
         <Form.Item
           label="Grade Name"
           name="gradename"
           rules={[{ required: true, message: "Please input grade!" }]}
         >
-          <Input />
+          <Input autoFocus={true} />
         </Form.Item>
 
         <Form.Item

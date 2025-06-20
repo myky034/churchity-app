@@ -6,11 +6,7 @@ const prisma = new PrismaClient();
 // Get all grade records
 export async function GET() {
   try {
-    const grades = await prisma.grade.findMany({
-      include: {
-        class: true,
-      },
-    });
+    const grades = await prisma.grade.findMany();
     return NextResponse.json(grades);
   } catch (error) {
     console.error(error);

@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Badge, Space, Flex, Button, Divider, Table, message } from "antd";
+import {
+  Badge,
+  Space,
+  Flex,
+  Button,
+  Divider,
+  Table,
+  message,
+  Popconfirm,
+} from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import GradeModalForm from "@/components/modal/GradeModalForm";
 
@@ -13,6 +22,8 @@ interface Grade {
 }
 
 const GradeTable: React.FC = () => {
+  //const { confirm } = Modal;
+
   const [grades, setGrades] = useState<Grade[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -68,7 +79,6 @@ const GradeTable: React.FC = () => {
         >
           <a
             onClick={() => {
-              console.log("Edit record:", record);
               setMode("edit");
               setEditingGrade(record);
               setModalVisible(true);
@@ -76,9 +86,17 @@ const GradeTable: React.FC = () => {
           >
             <EditOutlined />
           </a>
-          <a>
-            <DeleteOutlined />
-          </a>
+          <Popconfirm
+            title="Are you sure delete this grade?"
+            okText="Delete"
+            okType="danger"
+            cancelText="Cancel"
+            onConfirm={() => handleDeleteGrade(record.key)}
+          >
+            <a>
+              <DeleteOutlined />
+            </a>
+          </Popconfirm>
         </Space>
       ),
     },
@@ -136,12 +154,26 @@ const GradeTable: React.FC = () => {
     message.error("Failed to create grade");
   };
 
+  const handleDeleteGrade = async (key: string) => {
+    setLoading(true);
+    try {
+      await fetch(`http://localhost:3000/api/grade/${key}`, {
+        method: "DELETE",
+      });
+      await fetchGrades(); // Refresh the list after deletion
+      message.success("Grade deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting grade:", error);
+      message.error("Failed to delete grade");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const showModal = () => {
     setMode("create");
     setEditingGrade(null);
     setModalVisible(true);
-    // Reset form values if needed
-    // setFormValues({ gradename: "", gradedescription: "", isactive: false });
   };
 
   const handleModalClose = () => {
@@ -206,6 +238,7 @@ const GradeTable: React.FC = () => {
               }
             : undefined
         }
+        mode={mode}
       />
       <Divider />
       <Table

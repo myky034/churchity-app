@@ -17,6 +17,7 @@ interface GradeModalFormProps {
     gradedescription: string;
     isactive: boolean;
   };
+  mode: "create" | "edit";
 }
 
 const GradeModalForm: React.FC<GradeModalFormProps> = ({
@@ -26,6 +27,7 @@ const GradeModalForm: React.FC<GradeModalFormProps> = ({
   onFinish,
   onFinishFailed,
   initialValues,
+  mode,
 }) => {
   const [form] = Form.useForm();
 
@@ -35,12 +37,13 @@ const GradeModalForm: React.FC<GradeModalFormProps> = ({
     } else if (visible && !initialValues) {
       form.resetFields();
     }
-  }, [visible, initialValues, form]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible, form]);
   return (
     <div>
       <Modal
         open={visible}
-        title="Title"
+        title={mode === "create" ? "Create Grade" : "Edit Grade"}
         //onOk={handleOk}
         onCancel={onClose}
         footer={null}

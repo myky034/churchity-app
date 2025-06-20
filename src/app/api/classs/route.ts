@@ -6,15 +6,9 @@ const prisma = new PrismaClient();
 // Get all classes
 export async function GET() {
   try {
-    const classes = await prisma.class
-      .findMany
-      //     {
-      //   include: {
-      //     users: true,
-      //     class_type: true,
-      //   },
-      // }
-      ();
+    const classes = await prisma.class.findMany({
+      include: { grade: true },
+    });
     return NextResponse.json(classes);
   } catch (error) {
     console.error(error);
@@ -33,18 +27,16 @@ export async function POST(request: Request) {
     const body = await request.json();
     const newClass = await prisma.class.create({
       data: {
-        classname: body.class_name,
-        school_year: body.school_year,
+        classname: body.classname,
         grade_id: body.grade_id,
-        // class_type_id: body.class_type_id,
-        // users: {
-        //   connect: body.users.map((userId: string) => ({ id: userId })),
-        // },
+        createdBy: body.createdBy ?? null,
+        updatedBy: body.updatedBy ?? null,
+        isActive: body.isActive,
+        // Add other fields as needed
       },
-      //   include: {
-      //     users: true,
-      //     class_type: true,
-      //   },
+      include: {
+        grade: true, // Include related grade data if needed
+      },
     });
     return NextResponse.json(newClass);
   } catch (error) {

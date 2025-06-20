@@ -35,26 +35,25 @@ export async function GET(request: Request, { params }: Params) {
 }
 
 // Put (update) a class by ID
-export async function PUT(request: Request, { params }: Params) {
+export async function PUT(
+  request: Request,
+  context: { params: { id: string } }
+) {
   const prisma = new PrismaClient();
-  const { id } = params;
+  const id = context.params.id; // <-- Correct usage
   try {
     const body = await request.json();
     const updatedClass = await prisma.class.update({
       where: { class_id: id },
       data: {
-        classname: body.class_name,
-        school_year: body.school_year,
+        classname: body.classname,
         grade_id: body.grade_id,
-        // class_type_id: body.class_type_id,
-        // users: {
-        //   connect: body.users.map((userId: string) => ({ id: userId })),
-        // },
+        updatedBy: body.updatedBy ?? null,
+        isActive: body.isActive,
       },
-      // include: {
-      //   users: true,
-      //   class_type: true,
-      // },
+      include: {
+        grade: true,
+      },
     });
     return NextResponse.json(updatedClass);
   } catch (error) {

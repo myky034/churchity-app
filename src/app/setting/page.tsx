@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Card, Divider } from "antd";
 import GradeTable from "@/components/table/GradeTable";
+import ClassTable from "@/components/table/ClassTable";
 
 const tabListNoTitle = [
   {
@@ -21,7 +22,7 @@ const tabListNoTitle = [
 
 const contentListNoTitle: Record<string, React.ReactNode> = {
   grade: <GradeTable />,
-  class: <p>app content</p>,
+  class: <ClassTable />,
   role: <p>project content</p>,
 };
 

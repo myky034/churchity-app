@@ -2942,15 +2942,15 @@ export namespace Prisma {
     phone: number | null
     birthday: Date | null
     address: string | null
-    class: string | null
+    class: string
     city: string | null
     holyname: string | null
     fathername: string | null
     mothername: string | null
     baptismplace: string | null
     baptismdate: string | null
-    role: string | null
-    role_id: string | null
+    role: string
+    role_id: string
     isActive: boolean | null
     lastlogin: Date | null
     created_at: Date | null
@@ -3111,15 +3111,15 @@ export namespace Prisma {
       phone: number | null
       birthday: Date | null
       address: string | null
-      class: string | null
+      class: string
       city: string | null
       holyname: string | null
       fathername: string | null
       mothername: string | null
       baptismplace: string | null
       baptismdate: string | null
-      role: string | null
-      role_id: string | null
+      role: string
+      role_id: string
       isActive: boolean | null
       lastlogin: Date | null
       created_at: Date | null
@@ -3792,7 +3792,7 @@ export namespace Prisma {
     /**
      * The data needed to create a User.
      */
-    data?: XOR<UserCreateInput, UserUncheckedCreateInput>
+    data: XOR<UserCreateInput, UserUncheckedCreateInput>
   }
 
   /**
@@ -7456,21 +7456,33 @@ export namespace Prisma {
     class_id: string | null
     classname: string | null
     grade_id: string | null
-    school_year: string | null
+    created: Date | null
+    createdBy: string | null
+    updated: Date | null
+    updatedBy: string | null
+    isActive: boolean | null
   }
 
   export type ClassMaxAggregateOutputType = {
     class_id: string | null
     classname: string | null
     grade_id: string | null
-    school_year: string | null
+    created: Date | null
+    createdBy: string | null
+    updated: Date | null
+    updatedBy: string | null
+    isActive: boolean | null
   }
 
   export type ClassCountAggregateOutputType = {
     class_id: number
     classname: number
     grade_id: number
-    school_year: number
+    created: number
+    createdBy: number
+    updated: number
+    updatedBy: number
+    isActive: number
     _all: number
   }
 
@@ -7479,21 +7491,33 @@ export namespace Prisma {
     class_id?: true
     classname?: true
     grade_id?: true
-    school_year?: true
+    created?: true
+    createdBy?: true
+    updated?: true
+    updatedBy?: true
+    isActive?: true
   }
 
   export type ClassMaxAggregateInputType = {
     class_id?: true
     classname?: true
     grade_id?: true
-    school_year?: true
+    created?: true
+    createdBy?: true
+    updated?: true
+    updatedBy?: true
+    isActive?: true
   }
 
   export type ClassCountAggregateInputType = {
     class_id?: true
     classname?: true
     grade_id?: true
-    school_year?: true
+    created?: true
+    createdBy?: true
+    updated?: true
+    updatedBy?: true
+    isActive?: true
     _all?: true
   }
 
@@ -7571,9 +7595,13 @@ export namespace Prisma {
 
   export type ClassGroupByOutputType = {
     class_id: string
-    classname: string | null
+    classname: string
     grade_id: string
-    school_year: string | null
+    created: Date | null
+    createdBy: string | null
+    updated: Date | null
+    updatedBy: string | null
+    isActive: boolean | null
     _count: ClassCountAggregateOutputType | null
     _min: ClassMinAggregateOutputType | null
     _max: ClassMaxAggregateOutputType | null
@@ -7597,7 +7625,11 @@ export namespace Prisma {
     class_id?: boolean
     classname?: boolean
     grade_id?: boolean
-    school_year?: boolean
+    created?: boolean
+    createdBy?: boolean
+    updated?: boolean
+    updatedBy?: boolean
+    isActive?: boolean
     classSubjects?: boolean | Class$classSubjectsArgs<ExtArgs>
     classusers?: boolean | Class$classusersArgs<ExtArgs>
     grade?: boolean | GradeDefaultArgs<ExtArgs>
@@ -7608,7 +7640,11 @@ export namespace Prisma {
     class_id?: boolean
     classname?: boolean
     grade_id?: boolean
-    school_year?: boolean
+    created?: boolean
+    createdBy?: boolean
+    updated?: boolean
+    updatedBy?: boolean
+    isActive?: boolean
     grade?: boolean | GradeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["class"]>
 
@@ -7616,7 +7652,11 @@ export namespace Prisma {
     class_id?: boolean
     classname?: boolean
     grade_id?: boolean
-    school_year?: boolean
+    created?: boolean
+    createdBy?: boolean
+    updated?: boolean
+    updatedBy?: boolean
+    isActive?: boolean
     grade?: boolean | GradeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["class"]>
 
@@ -7624,10 +7664,14 @@ export namespace Prisma {
     class_id?: boolean
     classname?: boolean
     grade_id?: boolean
-    school_year?: boolean
+    created?: boolean
+    createdBy?: boolean
+    updated?: boolean
+    updatedBy?: boolean
+    isActive?: boolean
   }
 
-  export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"class_id" | "classname" | "grade_id" | "school_year", ExtArgs["result"]["class"]>
+  export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"class_id" | "classname" | "grade_id" | "created" | "createdBy" | "updated" | "updatedBy" | "isActive", ExtArgs["result"]["class"]>
   export type ClassInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classSubjects?: boolean | Class$classSubjectsArgs<ExtArgs>
     classusers?: boolean | Class$classusersArgs<ExtArgs>
@@ -7650,9 +7694,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       class_id: string
-      classname: string | null
+      classname: string
       grade_id: string
-      school_year: string | null
+      created: Date | null
+      createdBy: string | null
+      updated: Date | null
+      updatedBy: string | null
+      isActive: boolean | null
     }, ExtArgs["result"]["class"]>
     composites: {}
   }
@@ -8082,7 +8130,11 @@ export namespace Prisma {
     readonly class_id: FieldRef<"Class", 'String'>
     readonly classname: FieldRef<"Class", 'String'>
     readonly grade_id: FieldRef<"Class", 'String'>
-    readonly school_year: FieldRef<"Class", 'String'>
+    readonly created: FieldRef<"Class", 'DateTime'>
+    readonly createdBy: FieldRef<"Class", 'String'>
+    readonly updated: FieldRef<"Class", 'DateTime'>
+    readonly updatedBy: FieldRef<"Class", 'String'>
+    readonly isActive: FieldRef<"Class", 'Boolean'>
   }
     
 
@@ -19636,7 +19688,7 @@ export namespace Prisma {
 
   export type GradeGroupByOutputType = {
     grade_id: string
-    gradename: string | null
+    gradename: string
     gradedescription: string | null
     isactive: boolean | null
     created_at: Date | null
@@ -19713,7 +19765,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       grade_id: string
-      gradename: string | null
+      gradename: string
       gradedescription: string | null
       isactive: boolean | null
       created_at: Date | null
@@ -20366,7 +20418,7 @@ export namespace Prisma {
     /**
      * The data needed to create a Grade.
      */
-    data?: XOR<GradeCreateInput, GradeUncheckedCreateInput>
+    data: XOR<GradeCreateInput, GradeUncheckedCreateInput>
   }
 
   /**
@@ -20656,7 +20708,11 @@ export namespace Prisma {
     class_id: 'class_id',
     classname: 'classname',
     grade_id: 'grade_id',
-    school_year: 'school_year'
+    created: 'created',
+    createdBy: 'createdBy',
+    updated: 'updated',
+    updatedBy: 'updatedBy',
+    isActive: 'isActive'
   };
 
   export type ClassScalarFieldEnum = (typeof ClassScalarFieldEnum)[keyof typeof ClassScalarFieldEnum]
@@ -20937,15 +20993,15 @@ export namespace Prisma {
     phone?: IntNullableFilter<"User"> | number | null
     birthday?: DateTimeNullableFilter<"User"> | Date | string | null
     address?: StringNullableFilter<"User"> | string | null
-    class?: StringNullableFilter<"User"> | string | null
+    class?: StringFilter<"User"> | string
     city?: StringNullableFilter<"User"> | string | null
     holyname?: StringNullableFilter<"User"> | string | null
     fathername?: StringNullableFilter<"User"> | string | null
     mothername?: StringNullableFilter<"User"> | string | null
     baptismplace?: StringNullableFilter<"User"> | string | null
     baptismdate?: StringNullableFilter<"User"> | string | null
-    role?: StringNullableFilter<"User"> | string | null
-    role_id?: StringNullableFilter<"User"> | string | null
+    role?: StringFilter<"User"> | string
+    role_id?: StringFilter<"User"> | string
     isActive?: BoolNullableFilter<"User"> | boolean | null
     lastlogin?: DateTimeNullableFilter<"User"> | Date | string | null
     created_at?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -20967,15 +21023,15 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     birthday?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
-    class?: SortOrderInput | SortOrder
+    class?: SortOrder
     city?: SortOrderInput | SortOrder
     holyname?: SortOrderInput | SortOrder
     fathername?: SortOrderInput | SortOrder
     mothername?: SortOrderInput | SortOrder
     baptismplace?: SortOrderInput | SortOrder
     baptismdate?: SortOrderInput | SortOrder
-    role?: SortOrderInput | SortOrder
-    role_id?: SortOrderInput | SortOrder
+    role?: SortOrder
+    role_id?: SortOrder
     isActive?: SortOrderInput | SortOrder
     lastlogin?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
@@ -21000,15 +21056,15 @@ export namespace Prisma {
     phone?: IntNullableFilter<"User"> | number | null
     birthday?: DateTimeNullableFilter<"User"> | Date | string | null
     address?: StringNullableFilter<"User"> | string | null
-    class?: StringNullableFilter<"User"> | string | null
+    class?: StringFilter<"User"> | string
     city?: StringNullableFilter<"User"> | string | null
     holyname?: StringNullableFilter<"User"> | string | null
     fathername?: StringNullableFilter<"User"> | string | null
     mothername?: StringNullableFilter<"User"> | string | null
     baptismplace?: StringNullableFilter<"User"> | string | null
     baptismdate?: StringNullableFilter<"User"> | string | null
-    role?: StringNullableFilter<"User"> | string | null
-    role_id?: StringNullableFilter<"User"> | string | null
+    role?: StringFilter<"User"> | string
+    role_id?: StringFilter<"User"> | string
     isActive?: BoolNullableFilter<"User"> | boolean | null
     lastlogin?: DateTimeNullableFilter<"User"> | Date | string | null
     created_at?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -21030,15 +21086,15 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     birthday?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
-    class?: SortOrderInput | SortOrder
+    class?: SortOrder
     city?: SortOrderInput | SortOrder
     holyname?: SortOrderInput | SortOrder
     fathername?: SortOrderInput | SortOrder
     mothername?: SortOrderInput | SortOrder
     baptismplace?: SortOrderInput | SortOrder
     baptismdate?: SortOrderInput | SortOrder
-    role?: SortOrderInput | SortOrder
-    role_id?: SortOrderInput | SortOrder
+    role?: SortOrder
+    role_id?: SortOrder
     isActive?: SortOrderInput | SortOrder
     lastlogin?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
@@ -21062,15 +21118,15 @@ export namespace Prisma {
     phone?: IntNullableWithAggregatesFilter<"User"> | number | null
     birthday?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     address?: StringNullableWithAggregatesFilter<"User"> | string | null
-    class?: StringNullableWithAggregatesFilter<"User"> | string | null
+    class?: StringWithAggregatesFilter<"User"> | string
     city?: StringNullableWithAggregatesFilter<"User"> | string | null
     holyname?: StringNullableWithAggregatesFilter<"User"> | string | null
     fathername?: StringNullableWithAggregatesFilter<"User"> | string | null
     mothername?: StringNullableWithAggregatesFilter<"User"> | string | null
     baptismplace?: StringNullableWithAggregatesFilter<"User"> | string | null
     baptismdate?: StringNullableWithAggregatesFilter<"User"> | string | null
-    role?: StringNullableWithAggregatesFilter<"User"> | string | null
-    role_id?: StringNullableWithAggregatesFilter<"User"> | string | null
+    role?: StringWithAggregatesFilter<"User"> | string
+    role_id?: StringWithAggregatesFilter<"User"> | string
     isActive?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
     lastlogin?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     created_at?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -21263,9 +21319,13 @@ export namespace Prisma {
     OR?: ClassWhereInput[]
     NOT?: ClassWhereInput | ClassWhereInput[]
     class_id?: StringFilter<"Class"> | string
-    classname?: StringNullableFilter<"Class"> | string | null
+    classname?: StringFilter<"Class"> | string
     grade_id?: StringFilter<"Class"> | string
-    school_year?: StringNullableFilter<"Class"> | string | null
+    created?: DateTimeNullableFilter<"Class"> | Date | string | null
+    createdBy?: StringNullableFilter<"Class"> | string | null
+    updated?: DateTimeNullableFilter<"Class"> | Date | string | null
+    updatedBy?: StringNullableFilter<"Class"> | string | null
+    isActive?: BoolNullableFilter<"Class"> | boolean | null
     classSubjects?: ClassSubjectListRelationFilter
     classusers?: ClassuserListRelationFilter
     grade?: XOR<GradeScalarRelationFilter, GradeWhereInput>
@@ -21273,9 +21333,13 @@ export namespace Prisma {
 
   export type ClassOrderByWithRelationInput = {
     class_id?: SortOrder
-    classname?: SortOrderInput | SortOrder
+    classname?: SortOrder
     grade_id?: SortOrder
-    school_year?: SortOrderInput | SortOrder
+    created?: SortOrderInput | SortOrder
+    createdBy?: SortOrderInput | SortOrder
+    updated?: SortOrderInput | SortOrder
+    updatedBy?: SortOrderInput | SortOrder
+    isActive?: SortOrderInput | SortOrder
     classSubjects?: ClassSubjectOrderByRelationAggregateInput
     classusers?: ClassuserOrderByRelationAggregateInput
     grade?: GradeOrderByWithRelationInput
@@ -21286,9 +21350,13 @@ export namespace Prisma {
     AND?: ClassWhereInput | ClassWhereInput[]
     OR?: ClassWhereInput[]
     NOT?: ClassWhereInput | ClassWhereInput[]
-    classname?: StringNullableFilter<"Class"> | string | null
+    classname?: StringFilter<"Class"> | string
     grade_id?: StringFilter<"Class"> | string
-    school_year?: StringNullableFilter<"Class"> | string | null
+    created?: DateTimeNullableFilter<"Class"> | Date | string | null
+    createdBy?: StringNullableFilter<"Class"> | string | null
+    updated?: DateTimeNullableFilter<"Class"> | Date | string | null
+    updatedBy?: StringNullableFilter<"Class"> | string | null
+    isActive?: BoolNullableFilter<"Class"> | boolean | null
     classSubjects?: ClassSubjectListRelationFilter
     classusers?: ClassuserListRelationFilter
     grade?: XOR<GradeScalarRelationFilter, GradeWhereInput>
@@ -21296,9 +21364,13 @@ export namespace Prisma {
 
   export type ClassOrderByWithAggregationInput = {
     class_id?: SortOrder
-    classname?: SortOrderInput | SortOrder
+    classname?: SortOrder
     grade_id?: SortOrder
-    school_year?: SortOrderInput | SortOrder
+    created?: SortOrderInput | SortOrder
+    createdBy?: SortOrderInput | SortOrder
+    updated?: SortOrderInput | SortOrder
+    updatedBy?: SortOrderInput | SortOrder
+    isActive?: SortOrderInput | SortOrder
     _count?: ClassCountOrderByAggregateInput
     _max?: ClassMaxOrderByAggregateInput
     _min?: ClassMinOrderByAggregateInput
@@ -21309,9 +21381,13 @@ export namespace Prisma {
     OR?: ClassScalarWhereWithAggregatesInput[]
     NOT?: ClassScalarWhereWithAggregatesInput | ClassScalarWhereWithAggregatesInput[]
     class_id?: StringWithAggregatesFilter<"Class"> | string
-    classname?: StringNullableWithAggregatesFilter<"Class"> | string | null
+    classname?: StringWithAggregatesFilter<"Class"> | string
     grade_id?: StringWithAggregatesFilter<"Class"> | string
-    school_year?: StringNullableWithAggregatesFilter<"Class"> | string | null
+    created?: DateTimeNullableWithAggregatesFilter<"Class"> | Date | string | null
+    createdBy?: StringNullableWithAggregatesFilter<"Class"> | string | null
+    updated?: DateTimeNullableWithAggregatesFilter<"Class"> | Date | string | null
+    updatedBy?: StringNullableWithAggregatesFilter<"Class"> | string | null
+    isActive?: BoolNullableWithAggregatesFilter<"Class"> | boolean | null
   }
 
   export type ClassSubjectWhereInput = {
@@ -21928,7 +22004,7 @@ export namespace Prisma {
     OR?: GradeWhereInput[]
     NOT?: GradeWhereInput | GradeWhereInput[]
     grade_id?: StringFilter<"Grade"> | string
-    gradename?: StringNullableFilter<"Grade"> | string | null
+    gradename?: StringFilter<"Grade"> | string
     gradedescription?: StringNullableFilter<"Grade"> | string | null
     isactive?: BoolNullableFilter<"Grade"> | boolean | null
     created_at?: DateTimeNullableFilter<"Grade"> | Date | string | null
@@ -21938,7 +22014,7 @@ export namespace Prisma {
 
   export type GradeOrderByWithRelationInput = {
     grade_id?: SortOrder
-    gradename?: SortOrderInput | SortOrder
+    gradename?: SortOrder
     gradedescription?: SortOrderInput | SortOrder
     isactive?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
@@ -21951,7 +22027,7 @@ export namespace Prisma {
     AND?: GradeWhereInput | GradeWhereInput[]
     OR?: GradeWhereInput[]
     NOT?: GradeWhereInput | GradeWhereInput[]
-    gradename?: StringNullableFilter<"Grade"> | string | null
+    gradename?: StringFilter<"Grade"> | string
     gradedescription?: StringNullableFilter<"Grade"> | string | null
     isactive?: BoolNullableFilter<"Grade"> | boolean | null
     created_at?: DateTimeNullableFilter<"Grade"> | Date | string | null
@@ -21961,7 +22037,7 @@ export namespace Prisma {
 
   export type GradeOrderByWithAggregationInput = {
     grade_id?: SortOrder
-    gradename?: SortOrderInput | SortOrder
+    gradename?: SortOrder
     gradedescription?: SortOrderInput | SortOrder
     isactive?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
@@ -21976,7 +22052,7 @@ export namespace Prisma {
     OR?: GradeScalarWhereWithAggregatesInput[]
     NOT?: GradeScalarWhereWithAggregatesInput | GradeScalarWhereWithAggregatesInput[]
     grade_id?: StringWithAggregatesFilter<"Grade"> | string
-    gradename?: StringNullableWithAggregatesFilter<"Grade"> | string | null
+    gradename?: StringWithAggregatesFilter<"Grade"> | string
     gradedescription?: StringNullableWithAggregatesFilter<"Grade"> | string | null
     isactive?: BoolNullableWithAggregatesFilter<"Grade"> | boolean | null
     created_at?: DateTimeNullableWithAggregatesFilter<"Grade"> | Date | string | null
@@ -21992,15 +22068,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -22022,15 +22098,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -22052,15 +22128,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -22082,15 +22158,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -22112,15 +22188,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -22136,15 +22212,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -22160,15 +22236,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -22353,8 +22429,12 @@ export namespace Prisma {
 
   export type ClassCreateInput = {
     class_id?: string
-    classname?: string | null
-    school_year?: string | null
+    classname: string
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
     classSubjects?: ClassSubjectCreateNestedManyWithoutClassInput
     classusers?: ClassuserCreateNestedManyWithoutClassInput
     grade: GradeCreateNestedOneWithoutClassInput
@@ -22362,17 +22442,25 @@ export namespace Prisma {
 
   export type ClassUncheckedCreateInput = {
     class_id?: string
-    classname?: string | null
+    classname: string
     grade_id: string
-    school_year?: string | null
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
     classSubjects?: ClassSubjectUncheckedCreateNestedManyWithoutClassInput
     classusers?: ClassuserUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassUpdateInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUpdateManyWithoutClassNestedInput
     classusers?: ClassuserUpdateManyWithoutClassNestedInput
     grade?: GradeUpdateOneRequiredWithoutClassNestedInput
@@ -22380,31 +22468,47 @@ export namespace Prisma {
 
   export type ClassUncheckedUpdateInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
     grade_id?: StringFieldUpdateOperationsInput | string
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUncheckedUpdateManyWithoutClassNestedInput
     classusers?: ClassuserUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type ClassCreateManyInput = {
     class_id?: string
-    classname?: string | null
+    classname: string
     grade_id: string
-    school_year?: string | null
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
   }
 
   export type ClassUpdateManyMutationInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ClassUncheckedUpdateManyInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
     grade_id?: StringFieldUpdateOperationsInput | string
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ClassSubjectCreateInput = {
@@ -23011,7 +23115,7 @@ export namespace Prisma {
 
   export type GradeCreateInput = {
     grade_id?: string
-    gradename?: string | null
+    gradename: string
     gradedescription?: string | null
     isactive?: boolean | null
     created_at?: Date | string | null
@@ -23021,7 +23125,7 @@ export namespace Prisma {
 
   export type GradeUncheckedCreateInput = {
     grade_id?: string
-    gradename?: string | null
+    gradename: string
     gradedescription?: string | null
     isactive?: boolean | null
     created_at?: Date | string | null
@@ -23031,7 +23135,7 @@ export namespace Prisma {
 
   export type GradeUpdateInput = {
     grade_id?: StringFieldUpdateOperationsInput | string
-    gradename?: NullableStringFieldUpdateOperationsInput | string | null
+    gradename?: StringFieldUpdateOperationsInput | string
     gradedescription?: NullableStringFieldUpdateOperationsInput | string | null
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23041,7 +23145,7 @@ export namespace Prisma {
 
   export type GradeUncheckedUpdateInput = {
     grade_id?: StringFieldUpdateOperationsInput | string
-    gradename?: NullableStringFieldUpdateOperationsInput | string | null
+    gradename?: StringFieldUpdateOperationsInput | string
     gradedescription?: NullableStringFieldUpdateOperationsInput | string | null
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23051,7 +23155,7 @@ export namespace Prisma {
 
   export type GradeCreateManyInput = {
     grade_id?: string
-    gradename?: string | null
+    gradename: string
     gradedescription?: string | null
     isactive?: boolean | null
     created_at?: Date | string | null
@@ -23060,7 +23164,7 @@ export namespace Prisma {
 
   export type GradeUpdateManyMutationInput = {
     grade_id?: StringFieldUpdateOperationsInput | string
-    gradename?: NullableStringFieldUpdateOperationsInput | string | null
+    gradename?: StringFieldUpdateOperationsInput | string
     gradedescription?: NullableStringFieldUpdateOperationsInput | string | null
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23069,7 +23173,7 @@ export namespace Prisma {
 
   export type GradeUncheckedUpdateManyInput = {
     grade_id?: StringFieldUpdateOperationsInput | string
-    gradename?: NullableStringFieldUpdateOperationsInput | string | null
+    gradename?: StringFieldUpdateOperationsInput | string
     gradedescription?: NullableStringFieldUpdateOperationsInput | string | null
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23523,21 +23627,33 @@ export namespace Prisma {
     class_id?: SortOrder
     classname?: SortOrder
     grade_id?: SortOrder
-    school_year?: SortOrder
+    created?: SortOrder
+    createdBy?: SortOrder
+    updated?: SortOrder
+    updatedBy?: SortOrder
+    isActive?: SortOrder
   }
 
   export type ClassMaxOrderByAggregateInput = {
     class_id?: SortOrder
     classname?: SortOrder
     grade_id?: SortOrder
-    school_year?: SortOrder
+    created?: SortOrder
+    createdBy?: SortOrder
+    updated?: SortOrder
+    updatedBy?: SortOrder
+    isActive?: SortOrder
   }
 
   export type ClassMinOrderByAggregateInput = {
     class_id?: SortOrder
     classname?: SortOrder
     grade_id?: SortOrder
-    school_year?: SortOrder
+    created?: SortOrder
+    createdBy?: SortOrder
+    updated?: SortOrder
+    updatedBy?: SortOrder
+    isActive?: SortOrder
   }
 
   export type ClassScalarRelationFilter = {
@@ -25583,15 +25699,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -25612,15 +25728,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -25720,15 +25836,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25749,15 +25865,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26042,7 +26158,7 @@ export namespace Prisma {
 
   export type GradeCreateWithoutClassInput = {
     grade_id?: string
-    gradename?: string | null
+    gradename: string
     gradedescription?: string | null
     isactive?: boolean | null
     created_at?: Date | string | null
@@ -26051,7 +26167,7 @@ export namespace Prisma {
 
   export type GradeUncheckedCreateWithoutClassInput = {
     grade_id?: string
-    gradename?: string | null
+    gradename: string
     gradedescription?: string | null
     isactive?: boolean | null
     created_at?: Date | string | null
@@ -26108,7 +26224,7 @@ export namespace Prisma {
 
   export type GradeUpdateWithoutClassInput = {
     grade_id?: StringFieldUpdateOperationsInput | string
-    gradename?: NullableStringFieldUpdateOperationsInput | string | null
+    gradename?: StringFieldUpdateOperationsInput | string
     gradedescription?: NullableStringFieldUpdateOperationsInput | string | null
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26117,7 +26233,7 @@ export namespace Prisma {
 
   export type GradeUncheckedUpdateWithoutClassInput = {
     grade_id?: StringFieldUpdateOperationsInput | string
-    gradename?: NullableStringFieldUpdateOperationsInput | string | null
+    gradename?: StringFieldUpdateOperationsInput | string
     gradedescription?: NullableStringFieldUpdateOperationsInput | string | null
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26126,17 +26242,25 @@ export namespace Prisma {
 
   export type ClassCreateWithoutClassSubjectsInput = {
     class_id?: string
-    classname?: string | null
-    school_year?: string | null
+    classname: string
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
     classusers?: ClassuserCreateNestedManyWithoutClassInput
     grade: GradeCreateNestedOneWithoutClassInput
   }
 
   export type ClassUncheckedCreateWithoutClassSubjectsInput = {
     class_id?: string
-    classname?: string | null
+    classname: string
     grade_id: string
-    school_year?: string | null
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
     classusers?: ClassuserUncheckedCreateNestedManyWithoutClassInput
   }
 
@@ -26235,17 +26359,25 @@ export namespace Prisma {
 
   export type ClassUpdateWithoutClassSubjectsInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classusers?: ClassuserUpdateManyWithoutClassNestedInput
     grade?: GradeUpdateOneRequiredWithoutClassNestedInput
   }
 
   export type ClassUncheckedUpdateWithoutClassSubjectsInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
     grade_id?: StringFieldUpdateOperationsInput | string
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classusers?: ClassuserUncheckedUpdateManyWithoutClassNestedInput
   }
 
@@ -26310,17 +26442,25 @@ export namespace Prisma {
 
   export type ClassCreateWithoutClassusersInput = {
     class_id?: string
-    classname?: string | null
-    school_year?: string | null
+    classname: string
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
     classSubjects?: ClassSubjectCreateNestedManyWithoutClassInput
     grade: GradeCreateNestedOneWithoutClassInput
   }
 
   export type ClassUncheckedCreateWithoutClassusersInput = {
     class_id?: string
-    classname?: string | null
+    classname: string
     grade_id: string
-    school_year?: string | null
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
     classSubjects?: ClassSubjectUncheckedCreateNestedManyWithoutClassInput
   }
 
@@ -26338,15 +26478,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -26367,15 +26507,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -26405,17 +26545,25 @@ export namespace Prisma {
 
   export type ClassUpdateWithoutClassusersInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUpdateManyWithoutClassNestedInput
     grade?: GradeUpdateOneRequiredWithoutClassNestedInput
   }
 
   export type ClassUncheckedUpdateWithoutClassusersInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
     grade_id?: StringFieldUpdateOperationsInput | string
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUncheckedUpdateManyWithoutClassNestedInput
   }
 
@@ -26439,15 +26587,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26468,15 +26616,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26497,15 +26645,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -26526,15 +26674,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -26592,15 +26740,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26621,15 +26769,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26871,15 +27019,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -26900,15 +27048,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -26970,15 +27118,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26999,15 +27147,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -27059,15 +27207,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -27088,15 +27236,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -27177,15 +27325,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -27206,15 +27354,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -27371,15 +27519,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -27400,15 +27548,15 @@ export namespace Prisma {
     phone?: number | null
     birthday?: Date | string | null
     address?: string | null
-    class?: string | null
+    class: string
     city?: string | null
     holyname?: string | null
     fathername?: string | null
     mothername?: string | null
     baptismplace?: string | null
     baptismdate?: string | null
-    role?: string | null
-    role_id?: string | null
+    role: string
+    role_id: string
     isActive?: boolean | null
     lastlogin?: Date | string | null
     created_at?: Date | string | null
@@ -27468,15 +27616,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -27497,15 +27645,15 @@ export namespace Prisma {
     phone?: NullableIntFieldUpdateOperationsInput | number | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
-    class?: NullableStringFieldUpdateOperationsInput | string | null
+    class?: StringFieldUpdateOperationsInput | string
     city?: NullableStringFieldUpdateOperationsInput | string | null
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
     baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    role_id?: StringFieldUpdateOperationsInput | string
     isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     lastlogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -27548,16 +27696,24 @@ export namespace Prisma {
 
   export type ClassCreateWithoutGradeInput = {
     class_id?: string
-    classname?: string | null
-    school_year?: string | null
+    classname: string
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
     classSubjects?: ClassSubjectCreateNestedManyWithoutClassInput
     classusers?: ClassuserCreateNestedManyWithoutClassInput
   }
 
   export type ClassUncheckedCreateWithoutGradeInput = {
     class_id?: string
-    classname?: string | null
-    school_year?: string | null
+    classname: string
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
     classSubjects?: ClassSubjectUncheckedCreateNestedManyWithoutClassInput
     classusers?: ClassuserUncheckedCreateNestedManyWithoutClassInput
   }
@@ -27593,9 +27749,13 @@ export namespace Prisma {
     OR?: ClassScalarWhereInput[]
     NOT?: ClassScalarWhereInput | ClassScalarWhereInput[]
     class_id?: StringFilter<"Class"> | string
-    classname?: StringNullableFilter<"Class"> | string | null
+    classname?: StringFilter<"Class"> | string
     grade_id?: StringFilter<"Class"> | string
-    school_year?: StringNullableFilter<"Class"> | string | null
+    created?: DateTimeNullableFilter<"Class"> | Date | string | null
+    createdBy?: StringNullableFilter<"Class"> | string | null
+    updated?: DateTimeNullableFilter<"Class"> | Date | string | null
+    updatedBy?: StringNullableFilter<"Class"> | string | null
+    isActive?: BoolNullableFilter<"Class"> | boolean | null
   }
 
   export type UserRoleCreateManyUserInput = {
@@ -28192,30 +28352,46 @@ export namespace Prisma {
 
   export type ClassCreateManyGradeInput = {
     class_id?: string
-    classname?: string | null
-    school_year?: string | null
+    classname: string
+    created?: Date | string | null
+    createdBy?: string | null
+    updated?: Date | string | null
+    updatedBy?: string | null
+    isActive?: boolean | null
   }
 
   export type ClassUpdateWithoutGradeInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUpdateManyWithoutClassNestedInput
     classusers?: ClassuserUpdateManyWithoutClassNestedInput
   }
 
   export type ClassUncheckedUpdateWithoutGradeInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUncheckedUpdateManyWithoutClassNestedInput
     classusers?: ClassuserUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type ClassUncheckedUpdateManyWithoutGradeInput = {
     class_id?: StringFieldUpdateOperationsInput | string
-    classname?: NullableStringFieldUpdateOperationsInput | string | null
-    school_year?: NullableStringFieldUpdateOperationsInput | string | null
+    classname?: StringFieldUpdateOperationsInput | string
+    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
+    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
 
