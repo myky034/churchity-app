@@ -113,11 +113,11 @@ model Class {
   grade_id        String
 
   // New columns
-  created         DateTime?  @default(now())
-  createdBy       String?
-  updated         DateTime?  @updatedAt
-  updatedBy       String?
-  isActive        Boolean?   @default(true)
+  created_at         DateTime?  @default(now())
+  created_by       String?
+  updated_at         DateTime?  @updatedAt
+  updated_by       String?
+  isactive        Boolean?   @default(true)
 
   // Relations
   classSubjects   ClassSubject[]
@@ -235,6 +235,10 @@ model Role {
   isactive         Boolean?
   created_at       DateTime?  @default(now())
   updated_at       DateTime?  @updatedAt
+
+  // Renamed columns
+  created_by       String?    
+  updated_by       String?    
 
   // Relations
   userRoles        UserRole[]
