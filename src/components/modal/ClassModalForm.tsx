@@ -12,7 +12,6 @@ interface ClassModalFormProps {
     grade: string;
     isactive: boolean;
   }) => void;
-  //onFinishFailed: () => void;
   initialValues: {
     classname: string;
     grade: string;
@@ -25,7 +24,6 @@ const ClassModalForm: React.FC<ClassModalFormProps> = ({
   mode,
   onClose,
   onFinish,
-  //onFinishFailed,
   initialValues,
   loading,
 }) => {
@@ -61,14 +59,6 @@ const ClassModalForm: React.FC<ClassModalFormProps> = ({
           onClose={onClose}
           loading={loading}
           onFinish={onFinish}
-          //onFinishFailed={onFinishFailed}
-          // initialValues={
-          //   initialValues ?? {
-          //     classname: "",
-          //     grade: "",
-          //     isactive: false,
-          //   }
-          // }
         />
       </Modal>
     </div>

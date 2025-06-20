@@ -110,12 +110,7 @@ const ClassForm: React.FC<ClassFormProps> = ({
         </Form.Item>
 
         <Form.Item label={null}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            //onClick={handleOk}
-            loading={loading}
-          >
+          <Button type="primary" htmlType="submit" loading={loading}>
             Submit
           </Button>
           <Button

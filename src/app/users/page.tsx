@@ -1,5 +1,5 @@
 import React from "react";
-import InteractiveTable from "@/components/table/InteractiveUsersTable";
+import InteractiveTable from "@/components/table/UsersTable";
 import { getUser } from "@/lib/user";
 import { Divider, Button, Flex } from "antd";
 
@@ -24,7 +24,7 @@ export default async function UsersPage() {
         </Flex>
       </Flex>
       <Divider />
-      <InteractiveTable data={data}/>
+      <InteractiveTable data={data} />
     </div>
   );
 }

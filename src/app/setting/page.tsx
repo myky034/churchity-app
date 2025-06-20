@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Card, Divider } from "antd";
 import GradeTable from "@/components/table/GradeTable";
 import ClassTable from "@/components/table/ClassTable";
+import RoleTable from "@/components/table/RoleTable";
 
 const tabListNoTitle = [
   {
@@ -23,7 +24,7 @@ const tabListNoTitle = [
 const contentListNoTitle: Record<string, React.ReactNode> = {
   grade: <GradeTable />,
   class: <ClassTable />,
-  role: <p>project content</p>,
+  role: <RoleTable />,
 };
 
 export default function SettingsPage() {

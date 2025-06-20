@@ -14,6 +14,8 @@ export async function GET() {
       { error: "Failed to fetch roles" },
       { status: 500 }
     );
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
@@ -23,9 +25,11 @@ export async function POST(request: Request) {
     const body = await request.json();
     const newRole = await prisma.role.create({
       data: {
-        rolename: body.name,
-        roledescription: body.description,
+        rolename: body.rolename,
+        roledescription: body.roledescription,
         isactive: body.isactive,
+        created_by: body.created_by ?? null,
+        updated_by: body.updated_by ?? null,
       },
     });
     return NextResponse.json(newRole, { status: 201 });
@@ -35,5 +39,7 @@ export async function POST(request: Request) {
       { error: "Failed to create role" },
       { status: 500 }
     );
+  } finally {
+    await prisma.$disconnect();
   }
 }

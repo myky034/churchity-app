@@ -8,26 +8,34 @@ import {
   Space,
   Popconfirm,
   message,
+  Modal,
 } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
 import ClassModalForm from "../modal/ClassModalForm";
+import ClassUpload from "@/components/upload/ClassUpload";
 
 interface Class {
   id: string;
   name: string;
   grade: string;
   grade_id?: string;
-  createdBy: string;
-  created: string;
-  updated: string;
-  updatedBy: string;
-  isActive: boolean;
+  created_by: string;
+  created_at: string;
+  updated_at: string;
+  updated_by: string;
+  isactive: boolean;
 }
 
 const ClassTable: React.FC = () => {
   const [classes, setClasses] = React.useState<Class[]>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [modalVisible, setModalVisible] = React.useState<boolean>(false);
+  const [uploadModalVisible, setUploadModalVisible] =
+    React.useState<boolean>(false);
   const [mode, setMode] = React.useState<"create" | "edit">("create");
   const [editingClass, setEditingClass] = React.useState<Class | null>(null);
 
@@ -121,28 +129,28 @@ const ClassTable: React.FC = () => {
     },
     {
       title: "Created By",
-      dataIndex: "createdBy",
-      key: "createdBy",
+      dataIndex: "created_by",
+      key: "created_by",
     },
     {
       title: "Created",
-      dataIndex: "created",
-      key: "created",
+      dataIndex: "created_at",
+      key: "created_at",
     },
     {
       title: "Updated",
-      dataIndex: "updated",
-      key: "updated",
+      dataIndex: "updated_at",
+      key: "updated_at",
     },
     {
       title: "Updated By",
-      dataIndex: "updatedBy",
-      key: "updatedBy",
+      dataIndex: "updated_by",
+      key: "updated_by",
     },
     {
       title: "Status",
-      dataIndex: "isActive",
-      key: "isActive",
+      dataIndex: "isactive",
+      key: "isactive",
       render: (isActive: number) => (
         <span>
           <Badge
@@ -186,12 +194,12 @@ const ClassTable: React.FC = () => {
   const mapClasses = (data: Record<string, unknown>[]): Class[] =>
     data.map((g) => {
       // Format created and updated dates
-      const createdRaw = g.created as string;
-      const updatedRaw = g.updated as string;
-      const created = createdRaw
+      const createdRaw = g.created_at as string;
+      const updatedRaw = g.updated_at as string;
+      const created_at = createdRaw
         ? new Date(createdRaw).toLocaleDateString("en-GB")
         : new Date().toLocaleDateString("en-GB");
-      const updated = updatedRaw
+      const updated_at = updatedRaw
         ? new Date(updatedRaw).toLocaleDateString("en-GB")
         : "";
       const grade_id =
@@ -212,107 +220,13 @@ const ClassTable: React.FC = () => {
           grade_id ||
           "",
         grade_id,
-        isActive: typeof g.isActive === "boolean" ? g.isActive : !!g.isactive,
-        createdBy: (g.createdBy as string) || "admin",
-        created,
-        updated,
-        updatedBy: (g.updatedBy as string) || "",
+        isactive: typeof g.isactive === "boolean" ? g.isactive : !!g.isactive,
+        created_by: (g.created_by as string) || "admin",
+        created_at,
+        updated_at,
+        updated_by: (g.updated_by as string) || "",
       };
     });
-
-  // const showModal = () => {
-  //   setMode("create");
-  //   setEditingClass(null);
-  //   //form.resetFields();
-  //   setModalVisible(true);
-  // };
-
-  // const handleModalClose = () => {
-  //   setModalVisible(false);
-  //   setEditingClass(null);
-  // };
-
-  // const handleSubmitClass = async (values: {
-  //   classname: string;
-  //   grade: string;
-  //   isactive: boolean;
-  // }) => {
-  //   setLoading(true);
-  //   try {
-  //     const url =
-  //       mode === "create"
-  //         ? "http://localhost:3000/api/classs"
-  //         : `http://localhost:3000/api/classs/${editingClass?.id}`;
-  //     const method = mode === "create" ? "POST" : "PUT";
-  //     await fetch(url, {
-  //       method,
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-  //         classname: values.classname,
-  //         grade_id: values.grade,
-  //         isActive: values.isactive,
-  //       }),
-  //     });
-  //     await fetchClasses();
-  //     message.success(
-  //       mode === "create"
-  //         ? "Class created successfully!"
-  //         : "Class updated successfully!"
-  //     );
-  //     setModalVisible(false);
-  //     //setEditingClass(null);
-  //   } catch (error) {
-  //     console.error("Error creating class:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const handleFinishFailed = () => {
-  //   console.error("Failed to create class");
-  //   message.error("Failed to create class");
-  // };
-
-  // const handleDeleteClass = async (id: string) => {
-  //   setLoading(true);
-  //   try {
-  //     await fetch(`http://localhost:3000/api/classs/${id}`, {
-  //       method: "DELETE",
-  //     });
-  //     await fetchClasses(); // Refresh the list after deletion
-  //     message.success("Class deleted successfully!");
-  //   } catch (error) {
-  //     console.error("Error deleting class:", error);
-  //     message.error("Failed to delete class");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const fetchClasses = React.useCallback(async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await fetch("http://localhost:3000/api/classs", {
-  //       method: "GET",
-  //     });
-  //     const data = await response.json();
-  //     // Map API data to DataType
-  //     const mapped = mapClasses(data);
-  //     if (!Array.isArray(mapped)) {
-  //       throw new Error("Mapped data is not an array");
-  //     }
-  //     setClasses(mapped);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.error("Error fetching classes:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   fetchClasses();
-  // }, [fetchClasses]);
 
   return (
     <div>
@@ -326,6 +240,12 @@ const ClassTable: React.FC = () => {
           <Button type="primary" onClick={handleCreate}>
             Create Class
           </Button>
+          <Button
+            icon={<UploadOutlined />}
+            onClick={() => setUploadModalVisible(true)}
+          >
+            Import Class
+          </Button>
         </Flex>
       </Flex>
       <ClassModalForm
@@ -337,13 +257,31 @@ const ClassTable: React.FC = () => {
         }}
         onFinish={handleSubmit}
         loading={loading}
-        //onFinishFailed={handleFinishFailed}
         initialValues={{
           classname: editingClass ? editingClass.name : "",
           grade: editingClass ? editingClass.grade_id ?? "" : "",
-          isactive: editingClass ? editingClass.isActive : false,
+          isactive: editingClass ? editingClass.isactive : false,
         }}
       />
+      <Modal
+        title="Import Class Data"
+        open={uploadModalVisible}
+        onCancel={() => setUploadModalVisible(false)}
+        footer={null}
+        width={800}
+      >
+        <ClassUpload
+          classes={classes.map((c) => ({
+            classname: c.name,
+            grade: c.grade ? { gradename: c.grade } : undefined,
+            isactive: c.isactive,
+          }))}
+          onUploadSuccess={() => {
+            fetchClasses();
+            setUploadModalVisible(false);
+          }}
+        />
+      </Modal>
       <Divider />
       <Table
         rowKey="id"

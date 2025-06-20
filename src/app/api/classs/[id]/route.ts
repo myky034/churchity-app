@@ -48,8 +48,8 @@ export async function PUT(
       data: {
         classname: body.classname,
         grade_id: body.grade_id,
-        updatedBy: body.updatedBy ?? null,
-        isActive: body.isActive,
+        updated_by: body.updated_by ?? null,
+        isactive: body.isActive,
       },
       include: {
         grade: true,

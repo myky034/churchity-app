@@ -7456,33 +7456,33 @@ export namespace Prisma {
     class_id: string | null
     classname: string | null
     grade_id: string | null
-    created: Date | null
-    createdBy: string | null
-    updated: Date | null
-    updatedBy: string | null
-    isActive: boolean | null
+    created_at: Date | null
+    created_by: string | null
+    updated_at: Date | null
+    updated_by: string | null
+    isactive: boolean | null
   }
 
   export type ClassMaxAggregateOutputType = {
     class_id: string | null
     classname: string | null
     grade_id: string | null
-    created: Date | null
-    createdBy: string | null
-    updated: Date | null
-    updatedBy: string | null
-    isActive: boolean | null
+    created_at: Date | null
+    created_by: string | null
+    updated_at: Date | null
+    updated_by: string | null
+    isactive: boolean | null
   }
 
   export type ClassCountAggregateOutputType = {
     class_id: number
     classname: number
     grade_id: number
-    created: number
-    createdBy: number
-    updated: number
-    updatedBy: number
-    isActive: number
+    created_at: number
+    created_by: number
+    updated_at: number
+    updated_by: number
+    isactive: number
     _all: number
   }
 
@@ -7491,33 +7491,33 @@ export namespace Prisma {
     class_id?: true
     classname?: true
     grade_id?: true
-    created?: true
-    createdBy?: true
-    updated?: true
-    updatedBy?: true
-    isActive?: true
+    created_at?: true
+    created_by?: true
+    updated_at?: true
+    updated_by?: true
+    isactive?: true
   }
 
   export type ClassMaxAggregateInputType = {
     class_id?: true
     classname?: true
     grade_id?: true
-    created?: true
-    createdBy?: true
-    updated?: true
-    updatedBy?: true
-    isActive?: true
+    created_at?: true
+    created_by?: true
+    updated_at?: true
+    updated_by?: true
+    isactive?: true
   }
 
   export type ClassCountAggregateInputType = {
     class_id?: true
     classname?: true
     grade_id?: true
-    created?: true
-    createdBy?: true
-    updated?: true
-    updatedBy?: true
-    isActive?: true
+    created_at?: true
+    created_by?: true
+    updated_at?: true
+    updated_by?: true
+    isactive?: true
     _all?: true
   }
 
@@ -7597,11 +7597,11 @@ export namespace Prisma {
     class_id: string
     classname: string
     grade_id: string
-    created: Date | null
-    createdBy: string | null
-    updated: Date | null
-    updatedBy: string | null
-    isActive: boolean | null
+    created_at: Date | null
+    created_by: string | null
+    updated_at: Date | null
+    updated_by: string | null
+    isactive: boolean | null
     _count: ClassCountAggregateOutputType | null
     _min: ClassMinAggregateOutputType | null
     _max: ClassMaxAggregateOutputType | null
@@ -7625,11 +7625,11 @@ export namespace Prisma {
     class_id?: boolean
     classname?: boolean
     grade_id?: boolean
-    created?: boolean
-    createdBy?: boolean
-    updated?: boolean
-    updatedBy?: boolean
-    isActive?: boolean
+    created_at?: boolean
+    created_by?: boolean
+    updated_at?: boolean
+    updated_by?: boolean
+    isactive?: boolean
     classSubjects?: boolean | Class$classSubjectsArgs<ExtArgs>
     classusers?: boolean | Class$classusersArgs<ExtArgs>
     grade?: boolean | GradeDefaultArgs<ExtArgs>
@@ -7640,11 +7640,11 @@ export namespace Prisma {
     class_id?: boolean
     classname?: boolean
     grade_id?: boolean
-    created?: boolean
-    createdBy?: boolean
-    updated?: boolean
-    updatedBy?: boolean
-    isActive?: boolean
+    created_at?: boolean
+    created_by?: boolean
+    updated_at?: boolean
+    updated_by?: boolean
+    isactive?: boolean
     grade?: boolean | GradeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["class"]>
 
@@ -7652,11 +7652,11 @@ export namespace Prisma {
     class_id?: boolean
     classname?: boolean
     grade_id?: boolean
-    created?: boolean
-    createdBy?: boolean
-    updated?: boolean
-    updatedBy?: boolean
-    isActive?: boolean
+    created_at?: boolean
+    created_by?: boolean
+    updated_at?: boolean
+    updated_by?: boolean
+    isactive?: boolean
     grade?: boolean | GradeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["class"]>
 
@@ -7664,14 +7664,14 @@ export namespace Prisma {
     class_id?: boolean
     classname?: boolean
     grade_id?: boolean
-    created?: boolean
-    createdBy?: boolean
-    updated?: boolean
-    updatedBy?: boolean
-    isActive?: boolean
+    created_at?: boolean
+    created_by?: boolean
+    updated_at?: boolean
+    updated_by?: boolean
+    isactive?: boolean
   }
 
-  export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"class_id" | "classname" | "grade_id" | "created" | "createdBy" | "updated" | "updatedBy" | "isActive", ExtArgs["result"]["class"]>
+  export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"class_id" | "classname" | "grade_id" | "created_at" | "created_by" | "updated_at" | "updated_by" | "isactive", ExtArgs["result"]["class"]>
   export type ClassInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classSubjects?: boolean | Class$classSubjectsArgs<ExtArgs>
     classusers?: boolean | Class$classusersArgs<ExtArgs>
@@ -7696,11 +7696,11 @@ export namespace Prisma {
       class_id: string
       classname: string
       grade_id: string
-      created: Date | null
-      createdBy: string | null
-      updated: Date | null
-      updatedBy: string | null
-      isActive: boolean | null
+      created_at: Date | null
+      created_by: string | null
+      updated_at: Date | null
+      updated_by: string | null
+      isactive: boolean | null
     }, ExtArgs["result"]["class"]>
     composites: {}
   }
@@ -8130,11 +8130,11 @@ export namespace Prisma {
     readonly class_id: FieldRef<"Class", 'String'>
     readonly classname: FieldRef<"Class", 'String'>
     readonly grade_id: FieldRef<"Class", 'String'>
-    readonly created: FieldRef<"Class", 'DateTime'>
-    readonly createdBy: FieldRef<"Class", 'String'>
-    readonly updated: FieldRef<"Class", 'DateTime'>
-    readonly updatedBy: FieldRef<"Class", 'String'>
-    readonly isActive: FieldRef<"Class", 'Boolean'>
+    readonly created_at: FieldRef<"Class", 'DateTime'>
+    readonly created_by: FieldRef<"Class", 'String'>
+    readonly updated_at: FieldRef<"Class", 'DateTime'>
+    readonly updated_by: FieldRef<"Class", 'String'>
+    readonly isactive: FieldRef<"Class", 'Boolean'>
   }
     
 
@@ -17441,6 +17441,8 @@ export namespace Prisma {
     isactive: boolean | null
     created_at: Date | null
     updated_at: Date | null
+    created_by: string | null
+    updated_by: string | null
   }
 
   export type RoleMaxAggregateOutputType = {
@@ -17450,6 +17452,8 @@ export namespace Prisma {
     isactive: boolean | null
     created_at: Date | null
     updated_at: Date | null
+    created_by: string | null
+    updated_by: string | null
   }
 
   export type RoleCountAggregateOutputType = {
@@ -17459,6 +17463,8 @@ export namespace Prisma {
     isactive: number
     created_at: number
     updated_at: number
+    created_by: number
+    updated_by: number
     _all: number
   }
 
@@ -17470,6 +17476,8 @@ export namespace Prisma {
     isactive?: true
     created_at?: true
     updated_at?: true
+    created_by?: true
+    updated_by?: true
   }
 
   export type RoleMaxAggregateInputType = {
@@ -17479,6 +17487,8 @@ export namespace Prisma {
     isactive?: true
     created_at?: true
     updated_at?: true
+    created_by?: true
+    updated_by?: true
   }
 
   export type RoleCountAggregateInputType = {
@@ -17488,6 +17498,8 @@ export namespace Prisma {
     isactive?: true
     created_at?: true
     updated_at?: true
+    created_by?: true
+    updated_by?: true
     _all?: true
   }
 
@@ -17570,6 +17582,8 @@ export namespace Prisma {
     isactive: boolean | null
     created_at: Date | null
     updated_at: Date | null
+    created_by: string | null
+    updated_by: string | null
     _count: RoleCountAggregateOutputType | null
     _min: RoleMinAggregateOutputType | null
     _max: RoleMaxAggregateOutputType | null
@@ -17596,6 +17610,8 @@ export namespace Prisma {
     isactive?: boolean
     created_at?: boolean
     updated_at?: boolean
+    created_by?: boolean
+    updated_by?: boolean
     userRoles?: boolean | Role$userRolesArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["role"]>
@@ -17607,6 +17623,8 @@ export namespace Prisma {
     isactive?: boolean
     created_at?: boolean
     updated_at?: boolean
+    created_by?: boolean
+    updated_by?: boolean
   }, ExtArgs["result"]["role"]>
 
   export type RoleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17616,6 +17634,8 @@ export namespace Prisma {
     isactive?: boolean
     created_at?: boolean
     updated_at?: boolean
+    created_by?: boolean
+    updated_by?: boolean
   }, ExtArgs["result"]["role"]>
 
   export type RoleSelectScalar = {
@@ -17625,9 +17645,11 @@ export namespace Prisma {
     isactive?: boolean
     created_at?: boolean
     updated_at?: boolean
+    created_by?: boolean
+    updated_by?: boolean
   }
 
-  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"roleid" | "rolename" | "roledescription" | "isactive" | "created_at" | "updated_at", ExtArgs["result"]["role"]>
+  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"roleid" | "rolename" | "roledescription" | "isactive" | "created_at" | "updated_at" | "created_by" | "updated_by", ExtArgs["result"]["role"]>
   export type RoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     userRoles?: boolean | Role$userRolesArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
@@ -17647,6 +17669,8 @@ export namespace Prisma {
       isactive: boolean | null
       created_at: Date | null
       updated_at: Date | null
+      created_by: string | null
+      updated_by: string | null
     }, ExtArgs["result"]["role"]>
     composites: {}
   }
@@ -18077,6 +18101,8 @@ export namespace Prisma {
     readonly isactive: FieldRef<"Role", 'Boolean'>
     readonly created_at: FieldRef<"Role", 'DateTime'>
     readonly updated_at: FieldRef<"Role", 'DateTime'>
+    readonly created_by: FieldRef<"Role", 'String'>
+    readonly updated_by: FieldRef<"Role", 'String'>
   }
     
 
@@ -20708,11 +20734,11 @@ export namespace Prisma {
     class_id: 'class_id',
     classname: 'classname',
     grade_id: 'grade_id',
-    created: 'created',
-    createdBy: 'createdBy',
-    updated: 'updated',
-    updatedBy: 'updatedBy',
-    isActive: 'isActive'
+    created_at: 'created_at',
+    created_by: 'created_by',
+    updated_at: 'updated_at',
+    updated_by: 'updated_by',
+    isactive: 'isactive'
   };
 
   export type ClassScalarFieldEnum = (typeof ClassScalarFieldEnum)[keyof typeof ClassScalarFieldEnum]
@@ -20817,7 +20843,9 @@ export namespace Prisma {
     roledescription: 'roledescription',
     isactive: 'isactive',
     created_at: 'created_at',
-    updated_at: 'updated_at'
+    updated_at: 'updated_at',
+    created_by: 'created_by',
+    updated_by: 'updated_by'
   };
 
   export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
@@ -21321,11 +21349,11 @@ export namespace Prisma {
     class_id?: StringFilter<"Class"> | string
     classname?: StringFilter<"Class"> | string
     grade_id?: StringFilter<"Class"> | string
-    created?: DateTimeNullableFilter<"Class"> | Date | string | null
-    createdBy?: StringNullableFilter<"Class"> | string | null
-    updated?: DateTimeNullableFilter<"Class"> | Date | string | null
-    updatedBy?: StringNullableFilter<"Class"> | string | null
-    isActive?: BoolNullableFilter<"Class"> | boolean | null
+    created_at?: DateTimeNullableFilter<"Class"> | Date | string | null
+    created_by?: StringNullableFilter<"Class"> | string | null
+    updated_at?: DateTimeNullableFilter<"Class"> | Date | string | null
+    updated_by?: StringNullableFilter<"Class"> | string | null
+    isactive?: BoolNullableFilter<"Class"> | boolean | null
     classSubjects?: ClassSubjectListRelationFilter
     classusers?: ClassuserListRelationFilter
     grade?: XOR<GradeScalarRelationFilter, GradeWhereInput>
@@ -21335,11 +21363,11 @@ export namespace Prisma {
     class_id?: SortOrder
     classname?: SortOrder
     grade_id?: SortOrder
-    created?: SortOrderInput | SortOrder
-    createdBy?: SortOrderInput | SortOrder
-    updated?: SortOrderInput | SortOrder
-    updatedBy?: SortOrderInput | SortOrder
-    isActive?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    created_by?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    updated_by?: SortOrderInput | SortOrder
+    isactive?: SortOrderInput | SortOrder
     classSubjects?: ClassSubjectOrderByRelationAggregateInput
     classusers?: ClassuserOrderByRelationAggregateInput
     grade?: GradeOrderByWithRelationInput
@@ -21352,11 +21380,11 @@ export namespace Prisma {
     NOT?: ClassWhereInput | ClassWhereInput[]
     classname?: StringFilter<"Class"> | string
     grade_id?: StringFilter<"Class"> | string
-    created?: DateTimeNullableFilter<"Class"> | Date | string | null
-    createdBy?: StringNullableFilter<"Class"> | string | null
-    updated?: DateTimeNullableFilter<"Class"> | Date | string | null
-    updatedBy?: StringNullableFilter<"Class"> | string | null
-    isActive?: BoolNullableFilter<"Class"> | boolean | null
+    created_at?: DateTimeNullableFilter<"Class"> | Date | string | null
+    created_by?: StringNullableFilter<"Class"> | string | null
+    updated_at?: DateTimeNullableFilter<"Class"> | Date | string | null
+    updated_by?: StringNullableFilter<"Class"> | string | null
+    isactive?: BoolNullableFilter<"Class"> | boolean | null
     classSubjects?: ClassSubjectListRelationFilter
     classusers?: ClassuserListRelationFilter
     grade?: XOR<GradeScalarRelationFilter, GradeWhereInput>
@@ -21366,11 +21394,11 @@ export namespace Prisma {
     class_id?: SortOrder
     classname?: SortOrder
     grade_id?: SortOrder
-    created?: SortOrderInput | SortOrder
-    createdBy?: SortOrderInput | SortOrder
-    updated?: SortOrderInput | SortOrder
-    updatedBy?: SortOrderInput | SortOrder
-    isActive?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    created_by?: SortOrderInput | SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    updated_by?: SortOrderInput | SortOrder
+    isactive?: SortOrderInput | SortOrder
     _count?: ClassCountOrderByAggregateInput
     _max?: ClassMaxOrderByAggregateInput
     _min?: ClassMinOrderByAggregateInput
@@ -21383,11 +21411,11 @@ export namespace Prisma {
     class_id?: StringWithAggregatesFilter<"Class"> | string
     classname?: StringWithAggregatesFilter<"Class"> | string
     grade_id?: StringWithAggregatesFilter<"Class"> | string
-    created?: DateTimeNullableWithAggregatesFilter<"Class"> | Date | string | null
-    createdBy?: StringNullableWithAggregatesFilter<"Class"> | string | null
-    updated?: DateTimeNullableWithAggregatesFilter<"Class"> | Date | string | null
-    updatedBy?: StringNullableWithAggregatesFilter<"Class"> | string | null
-    isActive?: BoolNullableWithAggregatesFilter<"Class"> | boolean | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"Class"> | Date | string | null
+    created_by?: StringNullableWithAggregatesFilter<"Class"> | string | null
+    updated_at?: DateTimeNullableWithAggregatesFilter<"Class"> | Date | string | null
+    updated_by?: StringNullableWithAggregatesFilter<"Class"> | string | null
+    isactive?: BoolNullableWithAggregatesFilter<"Class"> | boolean | null
   }
 
   export type ClassSubjectWhereInput = {
@@ -21901,6 +21929,8 @@ export namespace Prisma {
     isactive?: BoolNullableFilter<"Role"> | boolean | null
     created_at?: DateTimeNullableFilter<"Role"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"Role"> | Date | string | null
+    created_by?: StringNullableFilter<"Role"> | string | null
+    updated_by?: StringNullableFilter<"Role"> | string | null
     userRoles?: UserRoleListRelationFilter
   }
 
@@ -21911,6 +21941,8 @@ export namespace Prisma {
     isactive?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
+    created_by?: SortOrderInput | SortOrder
+    updated_by?: SortOrderInput | SortOrder
     userRoles?: UserRoleOrderByRelationAggregateInput
   }
 
@@ -21924,6 +21956,8 @@ export namespace Prisma {
     isactive?: BoolNullableFilter<"Role"> | boolean | null
     created_at?: DateTimeNullableFilter<"Role"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"Role"> | Date | string | null
+    created_by?: StringNullableFilter<"Role"> | string | null
+    updated_by?: StringNullableFilter<"Role"> | string | null
     userRoles?: UserRoleListRelationFilter
   }, "roleid">
 
@@ -21934,6 +21968,8 @@ export namespace Prisma {
     isactive?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
+    created_by?: SortOrderInput | SortOrder
+    updated_by?: SortOrderInput | SortOrder
     _count?: RoleCountOrderByAggregateInput
     _max?: RoleMaxOrderByAggregateInput
     _min?: RoleMinOrderByAggregateInput
@@ -21949,6 +21985,8 @@ export namespace Prisma {
     isactive?: BoolNullableWithAggregatesFilter<"Role"> | boolean | null
     created_at?: DateTimeNullableWithAggregatesFilter<"Role"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"Role"> | Date | string | null
+    created_by?: StringNullableWithAggregatesFilter<"Role"> | string | null
+    updated_by?: StringNullableWithAggregatesFilter<"Role"> | string | null
   }
 
   export type UserRoleWhereInput = {
@@ -22430,11 +22468,11 @@ export namespace Prisma {
   export type ClassCreateInput = {
     class_id?: string
     classname: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
     classSubjects?: ClassSubjectCreateNestedManyWithoutClassInput
     classusers?: ClassuserCreateNestedManyWithoutClassInput
     grade: GradeCreateNestedOneWithoutClassInput
@@ -22444,11 +22482,11 @@ export namespace Prisma {
     class_id?: string
     classname: string
     grade_id: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
     classSubjects?: ClassSubjectUncheckedCreateNestedManyWithoutClassInput
     classusers?: ClassuserUncheckedCreateNestedManyWithoutClassInput
   }
@@ -22456,11 +22494,11 @@ export namespace Prisma {
   export type ClassUpdateInput = {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUpdateManyWithoutClassNestedInput
     classusers?: ClassuserUpdateManyWithoutClassNestedInput
     grade?: GradeUpdateOneRequiredWithoutClassNestedInput
@@ -22470,11 +22508,11 @@ export namespace Prisma {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
     grade_id?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUncheckedUpdateManyWithoutClassNestedInput
     classusers?: ClassuserUncheckedUpdateManyWithoutClassNestedInput
   }
@@ -22483,32 +22521,32 @@ export namespace Prisma {
     class_id?: string
     classname: string
     grade_id: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
   }
 
   export type ClassUpdateManyMutationInput = {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ClassUncheckedUpdateManyInput = {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
     grade_id?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type ClassSubjectCreateInput = {
@@ -23013,6 +23051,8 @@ export namespace Prisma {
     isactive?: boolean | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    created_by?: string | null
+    updated_by?: string | null
     userRoles?: UserRoleCreateNestedManyWithoutRoleInput
   }
 
@@ -23023,6 +23063,8 @@ export namespace Prisma {
     isactive?: boolean | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    created_by?: string | null
+    updated_by?: string | null
     userRoles?: UserRoleUncheckedCreateNestedManyWithoutRoleInput
   }
 
@@ -23033,6 +23075,8 @@ export namespace Prisma {
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUpdateManyWithoutRoleNestedInput
   }
 
@@ -23043,6 +23087,8 @@ export namespace Prisma {
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUncheckedUpdateManyWithoutRoleNestedInput
   }
 
@@ -23053,6 +23099,8 @@ export namespace Prisma {
     isactive?: boolean | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    created_by?: string | null
+    updated_by?: string | null
   }
 
   export type RoleUpdateManyMutationInput = {
@@ -23062,6 +23110,8 @@ export namespace Prisma {
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type RoleUncheckedUpdateManyInput = {
@@ -23071,6 +23121,8 @@ export namespace Prisma {
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserRoleCreateInput = {
@@ -23627,33 +23679,33 @@ export namespace Prisma {
     class_id?: SortOrder
     classname?: SortOrder
     grade_id?: SortOrder
-    created?: SortOrder
-    createdBy?: SortOrder
-    updated?: SortOrder
-    updatedBy?: SortOrder
-    isActive?: SortOrder
+    created_at?: SortOrder
+    created_by?: SortOrder
+    updated_at?: SortOrder
+    updated_by?: SortOrder
+    isactive?: SortOrder
   }
 
   export type ClassMaxOrderByAggregateInput = {
     class_id?: SortOrder
     classname?: SortOrder
     grade_id?: SortOrder
-    created?: SortOrder
-    createdBy?: SortOrder
-    updated?: SortOrder
-    updatedBy?: SortOrder
-    isActive?: SortOrder
+    created_at?: SortOrder
+    created_by?: SortOrder
+    updated_at?: SortOrder
+    updated_by?: SortOrder
+    isactive?: SortOrder
   }
 
   export type ClassMinOrderByAggregateInput = {
     class_id?: SortOrder
     classname?: SortOrder
     grade_id?: SortOrder
-    created?: SortOrder
-    createdBy?: SortOrder
-    updated?: SortOrder
-    updatedBy?: SortOrder
-    isActive?: SortOrder
+    created_at?: SortOrder
+    created_by?: SortOrder
+    updated_at?: SortOrder
+    updated_by?: SortOrder
+    isactive?: SortOrder
   }
 
   export type ClassScalarRelationFilter = {
@@ -23962,6 +24014,8 @@ export namespace Prisma {
     isactive?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    created_by?: SortOrder
+    updated_by?: SortOrder
   }
 
   export type RoleMaxOrderByAggregateInput = {
@@ -23971,6 +24025,8 @@ export namespace Prisma {
     isactive?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    created_by?: SortOrder
+    updated_by?: SortOrder
   }
 
   export type RoleMinOrderByAggregateInput = {
@@ -23980,6 +24036,8 @@ export namespace Prisma {
     isactive?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    created_by?: SortOrder
+    updated_by?: SortOrder
   }
 
   export type RoleScalarRelationFilter = {
@@ -26243,11 +26301,11 @@ export namespace Prisma {
   export type ClassCreateWithoutClassSubjectsInput = {
     class_id?: string
     classname: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
     classusers?: ClassuserCreateNestedManyWithoutClassInput
     grade: GradeCreateNestedOneWithoutClassInput
   }
@@ -26256,11 +26314,11 @@ export namespace Prisma {
     class_id?: string
     classname: string
     grade_id: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
     classusers?: ClassuserUncheckedCreateNestedManyWithoutClassInput
   }
 
@@ -26360,11 +26418,11 @@ export namespace Prisma {
   export type ClassUpdateWithoutClassSubjectsInput = {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classusers?: ClassuserUpdateManyWithoutClassNestedInput
     grade?: GradeUpdateOneRequiredWithoutClassNestedInput
   }
@@ -26373,11 +26431,11 @@ export namespace Prisma {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
     grade_id?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classusers?: ClassuserUncheckedUpdateManyWithoutClassNestedInput
   }
 
@@ -26443,11 +26501,11 @@ export namespace Prisma {
   export type ClassCreateWithoutClassusersInput = {
     class_id?: string
     classname: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
     classSubjects?: ClassSubjectCreateNestedManyWithoutClassInput
     grade: GradeCreateNestedOneWithoutClassInput
   }
@@ -26456,11 +26514,11 @@ export namespace Prisma {
     class_id?: string
     classname: string
     grade_id: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
     classSubjects?: ClassSubjectUncheckedCreateNestedManyWithoutClassInput
   }
 
@@ -26546,11 +26604,11 @@ export namespace Prisma {
   export type ClassUpdateWithoutClassusersInput = {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUpdateManyWithoutClassNestedInput
     grade?: GradeUpdateOneRequiredWithoutClassNestedInput
   }
@@ -26559,11 +26617,11 @@ export namespace Prisma {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
     grade_id?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUncheckedUpdateManyWithoutClassNestedInput
   }
 
@@ -27580,6 +27638,8 @@ export namespace Prisma {
     isactive?: boolean | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    created_by?: string | null
+    updated_by?: string | null
   }
 
   export type RoleUncheckedCreateWithoutUserRolesInput = {
@@ -27589,6 +27649,8 @@ export namespace Prisma {
     isactive?: boolean | null
     created_at?: Date | string | null
     updated_at?: Date | string | null
+    created_by?: string | null
+    updated_by?: string | null
   }
 
   export type RoleCreateOrConnectWithoutUserRolesInput = {
@@ -27683,6 +27745,8 @@ export namespace Prisma {
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type RoleUncheckedUpdateWithoutUserRolesInput = {
@@ -27692,16 +27756,18 @@ export namespace Prisma {
     isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ClassCreateWithoutGradeInput = {
     class_id?: string
     classname: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
     classSubjects?: ClassSubjectCreateNestedManyWithoutClassInput
     classusers?: ClassuserCreateNestedManyWithoutClassInput
   }
@@ -27709,11 +27775,11 @@ export namespace Prisma {
   export type ClassUncheckedCreateWithoutGradeInput = {
     class_id?: string
     classname: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
     classSubjects?: ClassSubjectUncheckedCreateNestedManyWithoutClassInput
     classusers?: ClassuserUncheckedCreateNestedManyWithoutClassInput
   }
@@ -27751,11 +27817,11 @@ export namespace Prisma {
     class_id?: StringFilter<"Class"> | string
     classname?: StringFilter<"Class"> | string
     grade_id?: StringFilter<"Class"> | string
-    created?: DateTimeNullableFilter<"Class"> | Date | string | null
-    createdBy?: StringNullableFilter<"Class"> | string | null
-    updated?: DateTimeNullableFilter<"Class"> | Date | string | null
-    updatedBy?: StringNullableFilter<"Class"> | string | null
-    isActive?: BoolNullableFilter<"Class"> | boolean | null
+    created_at?: DateTimeNullableFilter<"Class"> | Date | string | null
+    created_by?: StringNullableFilter<"Class"> | string | null
+    updated_at?: DateTimeNullableFilter<"Class"> | Date | string | null
+    updated_by?: StringNullableFilter<"Class"> | string | null
+    isactive?: BoolNullableFilter<"Class"> | boolean | null
   }
 
   export type UserRoleCreateManyUserInput = {
@@ -28353,21 +28419,21 @@ export namespace Prisma {
   export type ClassCreateManyGradeInput = {
     class_id?: string
     classname: string
-    created?: Date | string | null
-    createdBy?: string | null
-    updated?: Date | string | null
-    updatedBy?: string | null
-    isActive?: boolean | null
+    created_at?: Date | string | null
+    created_by?: string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    isactive?: boolean | null
   }
 
   export type ClassUpdateWithoutGradeInput = {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUpdateManyWithoutClassNestedInput
     classusers?: ClassuserUpdateManyWithoutClassNestedInput
   }
@@ -28375,11 +28441,11 @@ export namespace Prisma {
   export type ClassUncheckedUpdateWithoutGradeInput = {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     classSubjects?: ClassSubjectUncheckedUpdateManyWithoutClassNestedInput
     classusers?: ClassuserUncheckedUpdateManyWithoutClassNestedInput
   }
@@ -28387,11 +28453,11 @@ export namespace Prisma {
   export type ClassUncheckedUpdateManyWithoutGradeInput = {
     class_id?: StringFieldUpdateOperationsInput | string
     classname?: StringFieldUpdateOperationsInput | string
-    created?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updated?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    isactive?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
 

@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Layout, Menu, Breadcrumb, theme } from "antd";
+import { usePathname } from "next/navigation";
 
 const { Header, Content, Footer } = Layout;
 
@@ -19,10 +20,43 @@ const items = navItems.map((item) => ({
   label: <Link href={item.url}>{item.label}</Link>,
 }));
 
-export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
+export default function LayoutWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const pathname = usePathname();
+
+  // Helper to build breadcrumb items from path
+  const getBreadcrumbItems = () => {
+    const pathSnippets = pathname.split("/").filter((i) => i);
+    const breadcrumbItems = [
+      {
+        title: <Link href="/">Home</Link>,
+        key: "home",
+      },
+    ];
+
+    let url = "";
+    pathSnippets.forEach((snippet) => {
+      url += `/${snippet}`;
+      const navItem = navItems.find((item) => item.url === url);
+      breadcrumbItems.push({
+        title: navItem ? (
+          <Link href={navItem.url}>{navItem.label}</Link>
+        ) : (
+          <span>{snippet.charAt(0).toUpperCase() + snippet.slice(1)}</span>
+        ),
+        key: url,
+      });
+    });
+
+    return breadcrumbItems;
+  };
 
   return (
     <Layout style={{ minHeight: "100vh", overflowY: "auto" }}>
@@ -40,16 +74,15 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          selectedKeys={[
+            navItems.find((item) => item.url === pathname)?.key || "home",
+          ]}
           items={items}
           style={{ flex: 1, minWidth: 0 }}
         />
       </Header>
       <Content style={{ padding: "0 48px" }}>
-        <Breadcrumb
-          style={{ margin: "16px 0" }}
-          items={[{ title: "Home" }, { title: "List" }, { title: "App" }]}
-        />
+        <Breadcrumb style={{ margin: "16px 0" }} items={getBreadcrumbItems()} />
         <div
           style={{
             padding: 24,

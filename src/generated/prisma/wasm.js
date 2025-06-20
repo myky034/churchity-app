@@ -169,11 +169,11 @@ exports.Prisma.ClassScalarFieldEnum = {
   class_id: 'class_id',
   classname: 'classname',
   grade_id: 'grade_id',
-  created: 'created',
-  createdBy: 'createdBy',
-  updated: 'updated',
-  updatedBy: 'updatedBy',
-  isActive: 'isActive'
+  created_at: 'created_at',
+  created_by: 'created_by',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by',
+  isactive: 'isactive'
 };
 
 exports.Prisma.ClassSubjectScalarFieldEnum = {
@@ -251,7 +251,9 @@ exports.Prisma.RoleScalarFieldEnum = {
   roledescription: 'roledescription',
   isactive: 'isactive',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
 };
 
 exports.Prisma.UserRoleScalarFieldEnum = {

@@ -29,9 +29,9 @@ export async function POST(request: Request) {
       data: {
         classname: body.classname,
         grade_id: body.grade_id,
-        createdBy: body.createdBy ?? null,
-        updatedBy: body.updatedBy ?? null,
-        isActive: body.isActive,
+        created_by: body.created_by ?? null,
+        updated_by: body.updated_by ?? null,
+        isactive: body.isactive,
         // Add other fields as needed
       },
       include: {
