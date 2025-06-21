@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useRef, useState, useMemo } from "react";
 import {
   Table,
@@ -31,7 +29,7 @@ interface Props {
 
 type DataIndex = keyof DataType;
 
-const InteractiveTable: React.FC<Props> = ({ data }) => {
+const UserTable: React.FC<Props> = ({ data }) => {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef<InputRef>(null);
@@ -238,10 +236,7 @@ const InteractiveTable: React.FC<Props> = ({ data }) => {
       width: 60,
       render: () => (
         <Flex align="flex-start" gap="small" vertical>
-          <Dropdown
-            menu={{ items }}
-            placement="bottomLeft"
-          >
+          <Dropdown menu={{ items }} placement="bottomLeft">
             <Button type="text" icon={<MoreOutlined />}></Button>
           </Dropdown>
         </Flex>
@@ -274,8 +269,13 @@ const InteractiveTable: React.FC<Props> = ({ data }) => {
   ];
 
   return (
-    <Table<DataType> columns={columns} dataSource={data} onChange={onChange} rowKey="id"/>
+    <Table<DataType>
+      columns={columns}
+      dataSource={data}
+      onChange={onChange}
+      rowKey="id"
+    />
   );
 };
 
-export default InteractiveTable;
+export default UserTable;

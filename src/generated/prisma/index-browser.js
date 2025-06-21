@@ -119,15 +119,13 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  username: 'username',
-  password: 'password',
   name: 'name',
   email: 'email',
   phone: 'phone',
   birthday: 'birthday',
   address: 'address',
   class: 'class',
-  city: 'city',
+  grade: 'grade',
   holyname: 'holyname',
   fathername: 'fathername',
   mothername: 'mothername',
@@ -135,10 +133,24 @@ exports.Prisma.UserScalarFieldEnum = {
   baptismdate: 'baptismdate',
   role: 'role',
   role_id: 'role_id',
+  title: 'title',
   isActive: 'isActive',
   lastlogin: 'lastlogin',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.AccountScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  email: 'email',
+  passwordHash: 'passwordHash',
+  status: 'status',
+  lastLogin: 'lastLogin',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.ScoreScalarFieldEnum = {
@@ -285,6 +297,12 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.AccountStatus = exports.$Enums.AccountStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  PENDING: 'PENDING'
+};
+
 exports.TypeOfScore = exports.$Enums.TypeOfScore = {
   oral: 'oral',
   fifteenmintest: 'fifteenmintest',
@@ -309,6 +327,7 @@ exports.Conduct = exports.$Enums.Conduct = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Account: 'Account',
   Score: 'Score',
   ScoreType: 'ScoreType',
   Subject: 'Subject',
