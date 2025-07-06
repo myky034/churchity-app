@@ -2782,34 +2782,26 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
-  }
-
-  export type UserAvgAggregateOutputType = {
-    phone: number | null
-  }
-
-  export type UserSumAggregateOutputType = {
-    phone: number | null
   }
 
   export type UserMinAggregateOutputType = {
     id: string | null
     name: string | null
     email: string | null
-    phone: number | null
+    phone: string | null
     birthday: Date | null
     address: string | null
     class: string | null
     grade: string | null
     holyname: string | null
     fathername: string | null
+    fatherphone: string | null
     mothername: string | null
+    motherphone: string | null
     baptismplace: string | null
-    baptismdate: string | null
+    baptismdate: Date | null
     role: string | null
     role_id: string | null
     title: string | null
@@ -2819,22 +2811,32 @@ export namespace Prisma {
     updated_at: Date | null
     created_by: string | null
     updated_by: string | null
+    firstCommunionDate: Date | null
+    firstCommunionPlace: string | null
+    confirmationDate: Date | null
+    confirmationPlace: string | null
+    professionOfFaithDate: Date | null
+    professionOfFaithPlace: string | null
+    catechistLevel: string | null
+    avatar: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     name: string | null
     email: string | null
-    phone: number | null
+    phone: string | null
     birthday: Date | null
     address: string | null
     class: string | null
     grade: string | null
     holyname: string | null
     fathername: string | null
+    fatherphone: string | null
     mothername: string | null
+    motherphone: string | null
     baptismplace: string | null
-    baptismdate: string | null
+    baptismdate: Date | null
     role: string | null
     role_id: string | null
     title: string | null
@@ -2844,6 +2846,14 @@ export namespace Prisma {
     updated_at: Date | null
     created_by: string | null
     updated_by: string | null
+    firstCommunionDate: Date | null
+    firstCommunionPlace: string | null
+    confirmationDate: Date | null
+    confirmationPlace: string | null
+    professionOfFaithDate: Date | null
+    professionOfFaithPlace: string | null
+    catechistLevel: string | null
+    avatar: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -2857,7 +2867,9 @@ export namespace Prisma {
     grade: number
     holyname: number
     fathername: number
+    fatherphone: number
     mothername: number
+    motherphone: number
     baptismplace: number
     baptismdate: number
     role: number
@@ -2869,17 +2881,17 @@ export namespace Prisma {
     updated_at: number
     created_by: number
     updated_by: number
+    firstCommunionDate: number
+    firstCommunionPlace: number
+    confirmationDate: number
+    confirmationPlace: number
+    professionOfFaithDate: number
+    professionOfFaithPlace: number
+    catechistLevel: number
+    avatar: number
     _all: number
   }
 
-
-  export type UserAvgAggregateInputType = {
-    phone?: true
-  }
-
-  export type UserSumAggregateInputType = {
-    phone?: true
-  }
 
   export type UserMinAggregateInputType = {
     id?: true
@@ -2892,7 +2904,9 @@ export namespace Prisma {
     grade?: true
     holyname?: true
     fathername?: true
+    fatherphone?: true
     mothername?: true
+    motherphone?: true
     baptismplace?: true
     baptismdate?: true
     role?: true
@@ -2904,6 +2918,14 @@ export namespace Prisma {
     updated_at?: true
     created_by?: true
     updated_by?: true
+    firstCommunionDate?: true
+    firstCommunionPlace?: true
+    confirmationDate?: true
+    confirmationPlace?: true
+    professionOfFaithDate?: true
+    professionOfFaithPlace?: true
+    catechistLevel?: true
+    avatar?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2917,7 +2939,9 @@ export namespace Prisma {
     grade?: true
     holyname?: true
     fathername?: true
+    fatherphone?: true
     mothername?: true
+    motherphone?: true
     baptismplace?: true
     baptismdate?: true
     role?: true
@@ -2929,6 +2953,14 @@ export namespace Prisma {
     updated_at?: true
     created_by?: true
     updated_by?: true
+    firstCommunionDate?: true
+    firstCommunionPlace?: true
+    confirmationDate?: true
+    confirmationPlace?: true
+    professionOfFaithDate?: true
+    professionOfFaithPlace?: true
+    catechistLevel?: true
+    avatar?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2942,7 +2974,9 @@ export namespace Prisma {
     grade?: true
     holyname?: true
     fathername?: true
+    fatherphone?: true
     mothername?: true
+    motherphone?: true
     baptismplace?: true
     baptismdate?: true
     role?: true
@@ -2954,6 +2988,14 @@ export namespace Prisma {
     updated_at?: true
     created_by?: true
     updated_by?: true
+    firstCommunionDate?: true
+    firstCommunionPlace?: true
+    confirmationDate?: true
+    confirmationPlace?: true
+    professionOfFaithDate?: true
+    professionOfFaithPlace?: true
+    catechistLevel?: true
+    avatar?: true
     _all?: true
   }
 
@@ -2995,18 +3037,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UserAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -3037,8 +3067,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
@@ -3047,16 +3075,18 @@ export namespace Prisma {
     id: string
     name: string | null
     email: string | null
-    phone: number | null
+    phone: string | null
     birthday: Date | null
     address: string | null
     class: string
     grade: string
     holyname: string | null
     fathername: string | null
+    fatherphone: string | null
     mothername: string | null
+    motherphone: string | null
     baptismplace: string | null
-    baptismdate: string | null
+    baptismdate: Date | null
     role: string
     role_id: string
     title: string | null
@@ -3066,9 +3096,15 @@ export namespace Prisma {
     updated_at: Date | null
     created_by: string | null
     updated_by: string | null
+    firstCommunionDate: Date | null
+    firstCommunionPlace: string | null
+    confirmationDate: Date | null
+    confirmationPlace: string | null
+    professionOfFaithDate: Date | null
+    professionOfFaithPlace: string | null
+    catechistLevel: string | null
+    avatar: string | null
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -3098,7 +3134,9 @@ export namespace Prisma {
     grade?: boolean
     holyname?: boolean
     fathername?: boolean
+    fatherphone?: boolean
     mothername?: boolean
+    motherphone?: boolean
     baptismplace?: boolean
     baptismdate?: boolean
     role?: boolean
@@ -3110,6 +3148,14 @@ export namespace Prisma {
     updated_at?: boolean
     created_by?: boolean
     updated_by?: boolean
+    firstCommunionDate?: boolean
+    firstCommunionPlace?: boolean
+    confirmationDate?: boolean
+    confirmationPlace?: boolean
+    professionOfFaithDate?: boolean
+    professionOfFaithPlace?: boolean
+    catechistLevel?: boolean
+    avatar?: boolean
     userRoles?: boolean | User$userRolesArgs<ExtArgs>
     scores?: boolean | User$scoresArgs<ExtArgs>
     attendance?: boolean | User$attendanceArgs<ExtArgs>
@@ -3131,7 +3177,9 @@ export namespace Prisma {
     grade?: boolean
     holyname?: boolean
     fathername?: boolean
+    fatherphone?: boolean
     mothername?: boolean
+    motherphone?: boolean
     baptismplace?: boolean
     baptismdate?: boolean
     role?: boolean
@@ -3143,6 +3191,14 @@ export namespace Prisma {
     updated_at?: boolean
     created_by?: boolean
     updated_by?: boolean
+    firstCommunionDate?: boolean
+    firstCommunionPlace?: boolean
+    confirmationDate?: boolean
+    confirmationPlace?: boolean
+    professionOfFaithDate?: boolean
+    professionOfFaithPlace?: boolean
+    catechistLevel?: boolean
+    avatar?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3156,7 +3212,9 @@ export namespace Prisma {
     grade?: boolean
     holyname?: boolean
     fathername?: boolean
+    fatherphone?: boolean
     mothername?: boolean
+    motherphone?: boolean
     baptismplace?: boolean
     baptismdate?: boolean
     role?: boolean
@@ -3168,6 +3226,14 @@ export namespace Prisma {
     updated_at?: boolean
     created_by?: boolean
     updated_by?: boolean
+    firstCommunionDate?: boolean
+    firstCommunionPlace?: boolean
+    confirmationDate?: boolean
+    confirmationPlace?: boolean
+    professionOfFaithDate?: boolean
+    professionOfFaithPlace?: boolean
+    catechistLevel?: boolean
+    avatar?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -3181,7 +3247,9 @@ export namespace Prisma {
     grade?: boolean
     holyname?: boolean
     fathername?: boolean
+    fatherphone?: boolean
     mothername?: boolean
+    motherphone?: boolean
     baptismplace?: boolean
     baptismdate?: boolean
     role?: boolean
@@ -3193,9 +3261,17 @@ export namespace Prisma {
     updated_at?: boolean
     created_by?: boolean
     updated_by?: boolean
+    firstCommunionDate?: boolean
+    firstCommunionPlace?: boolean
+    confirmationDate?: boolean
+    confirmationPlace?: boolean
+    professionOfFaithDate?: boolean
+    professionOfFaithPlace?: boolean
+    catechistLevel?: boolean
+    avatar?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "birthday" | "address" | "class" | "grade" | "holyname" | "fathername" | "mothername" | "baptismplace" | "baptismdate" | "role" | "role_id" | "title" | "isActive" | "lastlogin" | "created_at" | "updated_at" | "created_by" | "updated_by", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "birthday" | "address" | "class" | "grade" | "holyname" | "fathername" | "fatherphone" | "mothername" | "motherphone" | "baptismplace" | "baptismdate" | "role" | "role_id" | "title" | "isActive" | "lastlogin" | "created_at" | "updated_at" | "created_by" | "updated_by" | "firstCommunionDate" | "firstCommunionPlace" | "confirmationDate" | "confirmationPlace" | "professionOfFaithDate" | "professionOfFaithPlace" | "catechistLevel" | "avatar", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     userRoles?: boolean | User$userRolesArgs<ExtArgs>
     scores?: boolean | User$scoresArgs<ExtArgs>
@@ -3224,16 +3300,18 @@ export namespace Prisma {
       id: string
       name: string | null
       email: string | null
-      phone: number | null
+      phone: string | null
       birthday: Date | null
       address: string | null
       class: string
       grade: string
       holyname: string | null
       fathername: string | null
+      fatherphone: string | null
       mothername: string | null
+      motherphone: string | null
       baptismplace: string | null
-      baptismdate: string | null
+      baptismdate: Date | null
       role: string
       role_id: string
       title: string | null
@@ -3243,6 +3321,14 @@ export namespace Prisma {
       updated_at: Date | null
       created_by: string | null
       updated_by: string | null
+      firstCommunionDate: Date | null
+      firstCommunionPlace: string | null
+      confirmationDate: Date | null
+      confirmationPlace: string | null
+      professionOfFaithDate: Date | null
+      professionOfFaithPlace: string | null
+      catechistLevel: string | null
+      avatar: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3676,16 +3762,18 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly phone: FieldRef<"User", 'Int'>
+    readonly phone: FieldRef<"User", 'String'>
     readonly birthday: FieldRef<"User", 'DateTime'>
     readonly address: FieldRef<"User", 'String'>
     readonly class: FieldRef<"User", 'String'>
     readonly grade: FieldRef<"User", 'String'>
     readonly holyname: FieldRef<"User", 'String'>
     readonly fathername: FieldRef<"User", 'String'>
+    readonly fatherphone: FieldRef<"User", 'String'>
     readonly mothername: FieldRef<"User", 'String'>
+    readonly motherphone: FieldRef<"User", 'String'>
     readonly baptismplace: FieldRef<"User", 'String'>
-    readonly baptismdate: FieldRef<"User", 'String'>
+    readonly baptismdate: FieldRef<"User", 'DateTime'>
     readonly role: FieldRef<"User", 'String'>
     readonly role_id: FieldRef<"User", 'String'>
     readonly title: FieldRef<"User", 'String'>
@@ -3695,6 +3783,14 @@ export namespace Prisma {
     readonly updated_at: FieldRef<"User", 'DateTime'>
     readonly created_by: FieldRef<"User", 'String'>
     readonly updated_by: FieldRef<"User", 'String'>
+    readonly firstCommunionDate: FieldRef<"User", 'DateTime'>
+    readonly firstCommunionPlace: FieldRef<"User", 'String'>
+    readonly confirmationDate: FieldRef<"User", 'DateTime'>
+    readonly confirmationPlace: FieldRef<"User", 'String'>
+    readonly professionOfFaithDate: FieldRef<"User", 'DateTime'>
+    readonly professionOfFaithPlace: FieldRef<"User", 'String'>
+    readonly catechistLevel: FieldRef<"User", 'String'>
+    readonly avatar: FieldRef<"User", 'String'>
   }
     
 
@@ -21918,7 +22014,9 @@ export namespace Prisma {
     grade: 'grade',
     holyname: 'holyname',
     fathername: 'fathername',
+    fatherphone: 'fatherphone',
     mothername: 'mothername',
+    motherphone: 'motherphone',
     baptismplace: 'baptismplace',
     baptismdate: 'baptismdate',
     role: 'role',
@@ -21929,7 +22027,15 @@ export namespace Prisma {
     created_at: 'created_at',
     updated_at: 'updated_at',
     created_by: 'created_by',
-    updated_by: 'updated_by'
+    updated_by: 'updated_by',
+    firstCommunionDate: 'firstCommunionDate',
+    firstCommunionPlace: 'firstCommunionPlace',
+    confirmationDate: 'confirmationDate',
+    confirmationPlace: 'confirmationPlace',
+    professionOfFaithDate: 'professionOfFaithDate',
+    professionOfFaithPlace: 'professionOfFaithPlace',
+    catechistLevel: 'catechistLevel',
+    avatar: 'avatar'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -22168,20 +22274,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -22259,6 +22351,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Conduct'
    */
   export type EnumConductFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Conduct'>
@@ -22282,16 +22388,18 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
-    phone?: IntNullableFilter<"User"> | number | null
+    phone?: StringNullableFilter<"User"> | string | null
     birthday?: DateTimeNullableFilter<"User"> | Date | string | null
     address?: StringNullableFilter<"User"> | string | null
     class?: StringFilter<"User"> | string
     grade?: StringFilter<"User"> | string
     holyname?: StringNullableFilter<"User"> | string | null
     fathername?: StringNullableFilter<"User"> | string | null
+    fatherphone?: StringNullableFilter<"User"> | string | null
     mothername?: StringNullableFilter<"User"> | string | null
+    motherphone?: StringNullableFilter<"User"> | string | null
     baptismplace?: StringNullableFilter<"User"> | string | null
-    baptismdate?: StringNullableFilter<"User"> | string | null
+    baptismdate?: DateTimeNullableFilter<"User"> | Date | string | null
     role?: StringFilter<"User"> | string
     role_id?: StringFilter<"User"> | string
     title?: StringNullableFilter<"User"> | string | null
@@ -22301,6 +22409,14 @@ export namespace Prisma {
     updated_at?: DateTimeNullableFilter<"User"> | Date | string | null
     created_by?: StringNullableFilter<"User"> | string | null
     updated_by?: StringNullableFilter<"User"> | string | null
+    firstCommunionDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    firstCommunionPlace?: StringNullableFilter<"User"> | string | null
+    confirmationDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    confirmationPlace?: StringNullableFilter<"User"> | string | null
+    professionOfFaithDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    professionOfFaithPlace?: StringNullableFilter<"User"> | string | null
+    catechistLevel?: StringNullableFilter<"User"> | string | null
+    avatar?: StringNullableFilter<"User"> | string | null
     userRoles?: UserRoleListRelationFilter
     scores?: ScoreListRelationFilter
     attendance?: AttendanceListRelationFilter
@@ -22321,7 +22437,9 @@ export namespace Prisma {
     grade?: SortOrder
     holyname?: SortOrderInput | SortOrder
     fathername?: SortOrderInput | SortOrder
+    fatherphone?: SortOrderInput | SortOrder
     mothername?: SortOrderInput | SortOrder
+    motherphone?: SortOrderInput | SortOrder
     baptismplace?: SortOrderInput | SortOrder
     baptismdate?: SortOrderInput | SortOrder
     role?: SortOrder
@@ -22333,6 +22451,14 @@ export namespace Prisma {
     updated_at?: SortOrderInput | SortOrder
     created_by?: SortOrderInput | SortOrder
     updated_by?: SortOrderInput | SortOrder
+    firstCommunionDate?: SortOrderInput | SortOrder
+    firstCommunionPlace?: SortOrderInput | SortOrder
+    confirmationDate?: SortOrderInput | SortOrder
+    confirmationPlace?: SortOrderInput | SortOrder
+    professionOfFaithDate?: SortOrderInput | SortOrder
+    professionOfFaithPlace?: SortOrderInput | SortOrder
+    catechistLevel?: SortOrderInput | SortOrder
+    avatar?: SortOrderInput | SortOrder
     userRoles?: UserRoleOrderByRelationAggregateInput
     scores?: ScoreOrderByRelationAggregateInput
     attendance?: AttendanceOrderByRelationAggregateInput
@@ -22349,16 +22475,18 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
-    phone?: IntNullableFilter<"User"> | number | null
+    phone?: StringNullableFilter<"User"> | string | null
     birthday?: DateTimeNullableFilter<"User"> | Date | string | null
     address?: StringNullableFilter<"User"> | string | null
     class?: StringFilter<"User"> | string
     grade?: StringFilter<"User"> | string
     holyname?: StringNullableFilter<"User"> | string | null
     fathername?: StringNullableFilter<"User"> | string | null
+    fatherphone?: StringNullableFilter<"User"> | string | null
     mothername?: StringNullableFilter<"User"> | string | null
+    motherphone?: StringNullableFilter<"User"> | string | null
     baptismplace?: StringNullableFilter<"User"> | string | null
-    baptismdate?: StringNullableFilter<"User"> | string | null
+    baptismdate?: DateTimeNullableFilter<"User"> | Date | string | null
     role?: StringFilter<"User"> | string
     role_id?: StringFilter<"User"> | string
     title?: StringNullableFilter<"User"> | string | null
@@ -22368,6 +22496,14 @@ export namespace Prisma {
     updated_at?: DateTimeNullableFilter<"User"> | Date | string | null
     created_by?: StringNullableFilter<"User"> | string | null
     updated_by?: StringNullableFilter<"User"> | string | null
+    firstCommunionDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    firstCommunionPlace?: StringNullableFilter<"User"> | string | null
+    confirmationDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    confirmationPlace?: StringNullableFilter<"User"> | string | null
+    professionOfFaithDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    professionOfFaithPlace?: StringNullableFilter<"User"> | string | null
+    catechistLevel?: StringNullableFilter<"User"> | string | null
+    avatar?: StringNullableFilter<"User"> | string | null
     userRoles?: UserRoleListRelationFilter
     scores?: ScoreListRelationFilter
     attendance?: AttendanceListRelationFilter
@@ -22388,7 +22524,9 @@ export namespace Prisma {
     grade?: SortOrder
     holyname?: SortOrderInput | SortOrder
     fathername?: SortOrderInput | SortOrder
+    fatherphone?: SortOrderInput | SortOrder
     mothername?: SortOrderInput | SortOrder
+    motherphone?: SortOrderInput | SortOrder
     baptismplace?: SortOrderInput | SortOrder
     baptismdate?: SortOrderInput | SortOrder
     role?: SortOrder
@@ -22400,11 +22538,17 @@ export namespace Prisma {
     updated_at?: SortOrderInput | SortOrder
     created_by?: SortOrderInput | SortOrder
     updated_by?: SortOrderInput | SortOrder
+    firstCommunionDate?: SortOrderInput | SortOrder
+    firstCommunionPlace?: SortOrderInput | SortOrder
+    confirmationDate?: SortOrderInput | SortOrder
+    confirmationPlace?: SortOrderInput | SortOrder
+    professionOfFaithDate?: SortOrderInput | SortOrder
+    professionOfFaithPlace?: SortOrderInput | SortOrder
+    catechistLevel?: SortOrderInput | SortOrder
+    avatar?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -22414,16 +22558,18 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    phone?: IntNullableWithAggregatesFilter<"User"> | number | null
+    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
     birthday?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     address?: StringNullableWithAggregatesFilter<"User"> | string | null
     class?: StringWithAggregatesFilter<"User"> | string
     grade?: StringWithAggregatesFilter<"User"> | string
     holyname?: StringNullableWithAggregatesFilter<"User"> | string | null
     fathername?: StringNullableWithAggregatesFilter<"User"> | string | null
+    fatherphone?: StringNullableWithAggregatesFilter<"User"> | string | null
     mothername?: StringNullableWithAggregatesFilter<"User"> | string | null
+    motherphone?: StringNullableWithAggregatesFilter<"User"> | string | null
     baptismplace?: StringNullableWithAggregatesFilter<"User"> | string | null
-    baptismdate?: StringNullableWithAggregatesFilter<"User"> | string | null
+    baptismdate?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     role?: StringWithAggregatesFilter<"User"> | string
     role_id?: StringWithAggregatesFilter<"User"> | string
     title?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -22433,6 +22579,14 @@ export namespace Prisma {
     updated_at?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     created_by?: StringNullableWithAggregatesFilter<"User"> | string | null
     updated_by?: StringNullableWithAggregatesFilter<"User"> | string | null
+    firstCommunionDate?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    firstCommunionPlace?: StringNullableWithAggregatesFilter<"User"> | string | null
+    confirmationDate?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    confirmationPlace?: StringNullableWithAggregatesFilter<"User"> | string | null
+    professionOfFaithDate?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    professionOfFaithPlace?: StringNullableWithAggregatesFilter<"User"> | string | null
+    catechistLevel?: StringNullableWithAggregatesFilter<"User"> | string | null
+    avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type AccountWhereInput = {
@@ -23445,16 +23599,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -23464,6 +23620,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleCreateNestedManyWithoutUserInput
     scores?: ScoreCreateNestedManyWithoutUserInput
     attendance?: AttendanceCreateNestedManyWithoutUserInput
@@ -23477,16 +23641,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -23496,6 +23662,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     scores?: ScoreUncheckedCreateNestedManyWithoutUserInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutUserInput
@@ -23509,16 +23683,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23528,6 +23704,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUpdateManyWithoutUserNestedInput
     scores?: ScoreUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUpdateManyWithoutUserNestedInput
@@ -23541,16 +23725,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23560,6 +23746,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     scores?: ScoreUncheckedUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
@@ -23573,16 +23767,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -23592,22 +23788,32 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23617,22 +23823,32 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23642,6 +23858,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountCreateInput = {
@@ -24693,17 +24917,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -24801,7 +25014,9 @@ export namespace Prisma {
     grade?: SortOrder
     holyname?: SortOrder
     fathername?: SortOrder
+    fatherphone?: SortOrder
     mothername?: SortOrder
+    motherphone?: SortOrder
     baptismplace?: SortOrder
     baptismdate?: SortOrder
     role?: SortOrder
@@ -24813,10 +25028,14 @@ export namespace Prisma {
     updated_at?: SortOrder
     created_by?: SortOrder
     updated_by?: SortOrder
-  }
-
-  export type UserAvgOrderByAggregateInput = {
-    phone?: SortOrder
+    firstCommunionDate?: SortOrder
+    firstCommunionPlace?: SortOrder
+    confirmationDate?: SortOrder
+    confirmationPlace?: SortOrder
+    professionOfFaithDate?: SortOrder
+    professionOfFaithPlace?: SortOrder
+    catechistLevel?: SortOrder
+    avatar?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -24830,7 +25049,9 @@ export namespace Prisma {
     grade?: SortOrder
     holyname?: SortOrder
     fathername?: SortOrder
+    fatherphone?: SortOrder
     mothername?: SortOrder
+    motherphone?: SortOrder
     baptismplace?: SortOrder
     baptismdate?: SortOrder
     role?: SortOrder
@@ -24842,6 +25063,14 @@ export namespace Prisma {
     updated_at?: SortOrder
     created_by?: SortOrder
     updated_by?: SortOrder
+    firstCommunionDate?: SortOrder
+    firstCommunionPlace?: SortOrder
+    confirmationDate?: SortOrder
+    confirmationPlace?: SortOrder
+    professionOfFaithDate?: SortOrder
+    professionOfFaithPlace?: SortOrder
+    catechistLevel?: SortOrder
+    avatar?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -24855,7 +25084,9 @@ export namespace Prisma {
     grade?: SortOrder
     holyname?: SortOrder
     fathername?: SortOrder
+    fatherphone?: SortOrder
     mothername?: SortOrder
+    motherphone?: SortOrder
     baptismplace?: SortOrder
     baptismdate?: SortOrder
     role?: SortOrder
@@ -24867,10 +25098,14 @@ export namespace Prisma {
     updated_at?: SortOrder
     created_by?: SortOrder
     updated_by?: SortOrder
-  }
-
-  export type UserSumOrderByAggregateInput = {
-    phone?: SortOrder
+    firstCommunionDate?: SortOrder
+    firstCommunionPlace?: SortOrder
+    confirmationDate?: SortOrder
+    confirmationPlace?: SortOrder
+    professionOfFaithDate?: SortOrder
+    professionOfFaithPlace?: SortOrder
+    catechistLevel?: SortOrder
+    avatar?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -24907,22 +25142,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -25318,6 +25537,17 @@ export namespace Prisma {
     _max?: NestedEnumAttendanceStatusFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type SchoolYearScalarRelationFilter = {
     is?: SchoolYearWhereInput
     isNot?: SchoolYearWhereInput
@@ -25356,6 +25586,22 @@ export namespace Prisma {
 
   export type SemesterSumOrderByAggregateInput = {
     year?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type SemesterListRelationFilter = {
@@ -25716,14 +25962,6 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -26442,6 +26680,14 @@ export namespace Prisma {
     connect?: ScoreWhereUniqueInput | ScoreWhereUniqueInput[]
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type SchoolYearUpdateOneRequiredWithoutSemestersNestedInput = {
     create?: XOR<SchoolYearCreateWithoutSemestersInput, SchoolYearUncheckedCreateWithoutSemestersInput>
     connectOrCreate?: SchoolYearCreateOrConnectWithoutSemestersInput
@@ -26804,17 +27050,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -26876,7 +27111,7 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -26884,23 +27119,7 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -26967,6 +27186,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -27015,6 +27245,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumAttendanceStatusFilter<$PrismaModel>
     _max?: NestedEnumAttendanceStatusFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumConductFilter<$PrismaModel = never> = {
@@ -27418,16 +27664,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -27437,6 +27685,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleCreateNestedManyWithoutUserInput
     scores?: ScoreCreateNestedManyWithoutUserInput
     attendance?: AttendanceCreateNestedManyWithoutUserInput
@@ -27449,16 +27705,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -27468,6 +27726,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     scores?: ScoreUncheckedCreateNestedManyWithoutUserInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutUserInput
@@ -27496,16 +27762,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27515,6 +27783,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUpdateManyWithoutUserNestedInput
     scores?: ScoreUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUpdateManyWithoutUserNestedInput
@@ -27527,16 +27803,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27546,6 +27824,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     scores?: ScoreUncheckedUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
@@ -27558,16 +27844,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -27577,6 +27865,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleCreateNestedManyWithoutUserInput
     attendance?: AttendanceCreateNestedManyWithoutUserInput
     discipline?: DisciplineCreateNestedManyWithoutUserInput
@@ -27589,16 +27885,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -27608,6 +27906,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutUserInput
     discipline?: DisciplineUncheckedCreateNestedManyWithoutUserInput
@@ -27699,16 +28005,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27718,6 +28026,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUpdateManyWithoutUserNestedInput
     discipline?: DisciplineUpdateManyWithoutUserNestedInput
@@ -27730,16 +28046,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27749,6 +28067,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
     discipline?: DisciplineUncheckedUpdateManyWithoutUserNestedInput
@@ -28345,16 +28671,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -28364,6 +28692,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleCreateNestedManyWithoutUserInput
     scores?: ScoreCreateNestedManyWithoutUserInput
     attendance?: AttendanceCreateNestedManyWithoutUserInput
@@ -28376,16 +28712,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -28395,6 +28733,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     scores?: ScoreUncheckedCreateNestedManyWithoutUserInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutUserInput
@@ -28458,16 +28804,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28477,6 +28825,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUpdateManyWithoutUserNestedInput
     scores?: ScoreUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUpdateManyWithoutUserNestedInput
@@ -28489,16 +28845,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28508,6 +28866,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     scores?: ScoreUncheckedUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
@@ -28520,16 +28886,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -28539,6 +28907,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleCreateNestedManyWithoutUserInput
     scores?: ScoreCreateNestedManyWithoutUserInput
     discipline?: DisciplineCreateNestedManyWithoutUserInput
@@ -28551,16 +28927,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -28570,6 +28948,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     scores?: ScoreUncheckedCreateNestedManyWithoutUserInput
     discipline?: DisciplineUncheckedCreateNestedManyWithoutUserInput
@@ -28619,16 +29005,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28638,6 +29026,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUpdateManyWithoutUserNestedInput
     scores?: ScoreUpdateManyWithoutUserNestedInput
     discipline?: DisciplineUpdateManyWithoutUserNestedInput
@@ -28650,16 +29046,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28669,6 +29067,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     scores?: ScoreUncheckedUpdateManyWithoutUserNestedInput
     discipline?: DisciplineUncheckedUpdateManyWithoutUserNestedInput
@@ -28902,16 +29308,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -28921,6 +29329,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleCreateNestedManyWithoutUserInput
     scores?: ScoreCreateNestedManyWithoutUserInput
     attendance?: AttendanceCreateNestedManyWithoutUserInput
@@ -28933,16 +29349,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -28952,6 +29370,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     scores?: ScoreUncheckedCreateNestedManyWithoutUserInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutUserInput
@@ -29005,16 +29431,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29024,6 +29452,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUpdateManyWithoutUserNestedInput
     scores?: ScoreUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUpdateManyWithoutUserNestedInput
@@ -29036,16 +29472,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29055,6 +29493,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     scores?: ScoreUncheckedUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
@@ -29098,16 +29544,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -29117,6 +29565,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleCreateNestedManyWithoutUserInput
     scores?: ScoreCreateNestedManyWithoutUserInput
     attendance?: AttendanceCreateNestedManyWithoutUserInput
@@ -29129,16 +29585,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -29148,6 +29606,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     userRoles?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     scores?: ScoreUncheckedCreateNestedManyWithoutUserInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutUserInput
@@ -29220,16 +29686,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29239,6 +29707,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUpdateManyWithoutUserNestedInput
     scores?: ScoreUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUpdateManyWithoutUserNestedInput
@@ -29251,16 +29727,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29270,6 +29748,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     userRoles?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     scores?: ScoreUncheckedUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
@@ -29418,16 +29904,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -29437,6 +29925,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     scores?: ScoreCreateNestedManyWithoutUserInput
     attendance?: AttendanceCreateNestedManyWithoutUserInput
     discipline?: DisciplineCreateNestedManyWithoutUserInput
@@ -29449,16 +29945,18 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    phone?: number | null
+    phone?: string | null
     birthday?: Date | string | null
     address?: string | null
     class: string
     grade: string
     holyname?: string | null
     fathername?: string | null
+    fatherphone?: string | null
     mothername?: string | null
+    motherphone?: string | null
     baptismplace?: string | null
-    baptismdate?: string | null
+    baptismdate?: Date | string | null
     role: string
     role_id: string
     title?: string | null
@@ -29468,6 +29966,14 @@ export namespace Prisma {
     updated_at?: Date | string | null
     created_by?: string | null
     updated_by?: string | null
+    firstCommunionDate?: Date | string | null
+    firstCommunionPlace?: string | null
+    confirmationDate?: Date | string | null
+    confirmationPlace?: string | null
+    professionOfFaithDate?: Date | string | null
+    professionOfFaithPlace?: string | null
+    catechistLevel?: string | null
+    avatar?: string | null
     scores?: ScoreUncheckedCreateNestedManyWithoutUserInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutUserInput
     discipline?: DisciplineUncheckedCreateNestedManyWithoutUserInput
@@ -29523,16 +30029,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29542,6 +30050,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     scores?: ScoreUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUpdateManyWithoutUserNestedInput
     discipline?: DisciplineUpdateManyWithoutUserNestedInput
@@ -29554,16 +30070,18 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    phone?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     class?: StringFieldUpdateOperationsInput | string
     grade?: StringFieldUpdateOperationsInput | string
     holyname?: NullableStringFieldUpdateOperationsInput | string | null
     fathername?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherphone?: NullableStringFieldUpdateOperationsInput | string | null
     mothername?: NullableStringFieldUpdateOperationsInput | string | null
+    motherphone?: NullableStringFieldUpdateOperationsInput | string | null
     baptismplace?: NullableStringFieldUpdateOperationsInput | string | null
-    baptismdate?: NullableStringFieldUpdateOperationsInput | string | null
+    baptismdate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     role?: StringFieldUpdateOperationsInput | string
     role_id?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29573,6 +30091,14 @@ export namespace Prisma {
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    firstCommunionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    firstCommunionPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    confirmationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    confirmationPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    professionOfFaithDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionOfFaithPlace?: NullableStringFieldUpdateOperationsInput | string | null
+    catechistLevel?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
     scores?: ScoreUncheckedUpdateManyWithoutUserNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
     discipline?: DisciplineUncheckedUpdateManyWithoutUserNestedInput

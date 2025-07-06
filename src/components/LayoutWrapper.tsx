@@ -15,11 +15,6 @@ const navItems = [
   { label: "Setting", url: "/setting", key: "setting" },
 ];
 
-const items = navItems.map((item) => ({
-  key: item.key,
-  label: <Link href={item.url}>{item.label}</Link>,
-}));
-
 export default function LayoutWrapper({
   children,
 }: {
@@ -31,9 +26,9 @@ export default function LayoutWrapper({
 
   const pathname = usePathname();
 
-  // Helper to build breadcrumb items from path
+  // Generate breadcrumbs from the current path
   const getBreadcrumbItems = () => {
-    const pathSnippets = pathname.split("/").filter((i) => i);
+    const pathSnippets = pathname.split("/").filter(Boolean);
     const breadcrumbItems = [
       {
         title: <Link href="/">Home</Link>,
@@ -70,14 +65,16 @@ export default function LayoutWrapper({
           alignItems: "center",
         }}
       >
-        <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
           selectedKeys={[
             navItems.find((item) => item.url === pathname)?.key || "home",
           ]}
-          items={items}
+          items={navItems.map((item) => ({
+            key: item.key,
+            label: <Link href={item.url}>{item.label}</Link>,
+          }))}
           style={{ flex: 1, minWidth: 0 }}
         />
       </Header>

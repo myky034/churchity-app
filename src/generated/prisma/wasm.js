@@ -128,7 +128,9 @@ exports.Prisma.UserScalarFieldEnum = {
   grade: 'grade',
   holyname: 'holyname',
   fathername: 'fathername',
+  fatherphone: 'fatherphone',
   mothername: 'mothername',
+  motherphone: 'motherphone',
   baptismplace: 'baptismplace',
   baptismdate: 'baptismdate',
   role: 'role',
@@ -139,7 +141,15 @@ exports.Prisma.UserScalarFieldEnum = {
   created_at: 'created_at',
   updated_at: 'updated_at',
   created_by: 'created_by',
-  updated_by: 'updated_by'
+  updated_by: 'updated_by',
+  firstCommunionDate: 'firstCommunionDate',
+  firstCommunionPlace: 'firstCommunionPlace',
+  confirmationDate: 'confirmationDate',
+  confirmationPlace: 'confirmationPlace',
+  professionOfFaithDate: 'professionOfFaithDate',
+  professionOfFaithPlace: 'professionOfFaithPlace',
+  catechistLevel: 'catechistLevel',
+  avatar: 'avatar'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {

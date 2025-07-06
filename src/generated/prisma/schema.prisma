@@ -37,29 +37,46 @@ enum AttendanceStatus {
   leave
 }
 
+enum AccountStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+}
+
 // Models
 model User {
-  id           String    @id @default(uuid())
-  username     String?
-  password     String?
-  name         String?
-  email        String?
-  phone        Int?
-  birthday     DateTime?
-  address      String?
-  class        String?
-  city         String?
-  holyname     String?
-  fathername   String?
-  mothername   String?
-  baptismplace String?
-  baptismdate  String?
-  role         String?
-  role_id      String?
-  isActive     Boolean?
-  lastlogin    DateTime?
-  created_at   DateTime? @default(now())
-  updated_at   DateTime? @updatedAt
+  id                     String    @id @default(uuid())
+  name                   String?
+  email                  String?
+  phone                  String?
+  birthday               DateTime?
+  address                String?
+  class                  String
+  grade                  String
+  holyname               String?
+  fathername             String?
+  fatherphone            String?
+  mothername             String?
+  motherphone            String?
+  baptismplace           String?
+  baptismdate            DateTime?
+  role                   String
+  role_id                String
+  title                  String?
+  isActive               Boolean?
+  lastlogin              DateTime?
+  created_at             DateTime? @default(now())
+  updated_at             DateTime? @updatedAt
+  created_by             String?
+  updated_by             String?
+  firstCommunionDate     DateTime?
+  firstCommunionPlace    String?
+  confirmationDate       DateTime?
+  confirmationPlace      String?
+  professionOfFaithDate  DateTime?
+  professionOfFaithPlace String?
+  catechistLevel         String?
+  avatar                 String?
 
   // Relations
   userRoles   UserRole[]
@@ -68,6 +85,22 @@ model User {
   discipline  Discipline[]
   transcripts Transcript[]
   classusers  Classuser[]
+  // Quan hệ 1:1 với Account
+  account     Account?     @relation("UserAccount")
+}
+
+model Account {
+  id           String        @id @default(uuid())
+  userId       String        @unique
+  email        String        @unique
+  passwordHash String
+  status       AccountStatus
+  lastLogin    DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Quan hệ với User
+  user User @relation("UserAccount", fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Score {
@@ -108,10 +141,16 @@ model Subject {
 }
 
 model Class {
-  class_id    String  @id @default(uuid())
-  classname   String?
-  grade_id    String
-  school_year String?
+  class_id  String @id @default(uuid())
+  classname String
+  grade_id  String
+
+  // New columns
+  created_at DateTime? @default(now())
+  created_by String?
+  updated_at DateTime? @updatedAt
+  updated_by String?
+  isactive   Boolean?  @default(true)
 
   // Relations
   classSubjects ClassSubject[]
@@ -230,6 +269,10 @@ model Role {
   created_at      DateTime? @default(now())
   updated_at      DateTime? @updatedAt
 
+  // Renamed columns
+  created_by String?
+  updated_by String?
+
   // Relations
   userRoles UserRole[]
 }
@@ -246,7 +289,7 @@ model UserRole {
 
 model Grade {
   grade_id         String    @id @default(uuid())
-  gradename        String?
+  gradename        String
   gradedescription String?
   isactive         Boolean?
   created_at       DateTime? @default(now())

@@ -1,3 +1,4 @@
+//import "antd/dist/reset.css";
 import type { Metadata } from "next";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import "./globals.css";

@@ -5,32 +5,82 @@ import UserTable from "@/components/table/UsersTable";
 import { getUser } from "@/lib/user";
 import { Button, Flex, Divider } from "antd";
 import UserForm from "@/components/form/UsersForm";
+import type { Users } from "@/components/form/UsersForm";
 
 interface User {
   id: string;
   name: string;
-  email: string;
-  // Add other user fields as needed
+  email?: string;
+  phone?: string | number;
+  birthday?: string;
+  address?: string;
+  class: string;
+  grade: string;
+  holyname: string;
+  fathername: string;
+  fatherphone?: string | number;
+  mothername: string;
+  motherphone?: string | number;
+  baptismplace?: string;
+  baptismdate?: string;
+  role?: string;
+  role_id?: string;
+  title?: string;
+  isActive?: boolean;
+  lastlogin?: string;
+  created_by?: string;
+  updated_by?: string;
+  firstCommunionDate?: string;
+  firstCommunionPlace?: string;
+  confirmationDate?: string;
+  confirmationPlace?: string;
+  professionOfFaithDate?: string;
+  professionOfFaithPlace?: string;
+  catechistLevel?: string;
+  avatar?: string;
 }
 
 const UsersPage: React.FC = ({}) => {
   const [data, setData] = useState<User[]>([]);
   const [open, setOpen] = useState(false);
+  const [editUser, setEditUser] = useState<User | undefined>(undefined);
+  const [isEditMode, setIsEditMode] = useState(false);
+
+  const fetchData = async () => {
+    const users = await getUser();
+    setData(users);
+  };
 
   React.useEffect(() => {
-    const fetchData = async () => {
-      const users = await getUser();
-      setData(users);
-    };
     fetchData();
   }, []);
 
   const showDrawer = () => {
+    setEditUser(undefined);
+    setIsEditMode(false);
     setOpen(true);
   };
 
   const onClose = () => {
     setOpen(false);
+    setEditUser(undefined);
+    setIsEditMode(false);
+  };
+
+  // Handle edit user
+  const handleEditUser = (user: Users) => {
+    console.log("Editing user:", user);
+    setEditUser(user);
+    setIsEditMode(true);
+    setOpen(true);
+  };
+
+  // Called after successful form submit
+  const handleFormSuccess = () => {
+    fetchData(); // Refresh users table
+    setOpen(false); // Close the form
+    setEditUser(undefined);
+    setIsEditMode(false);
   };
 
   return (
@@ -50,18 +100,21 @@ const UsersPage: React.FC = ({}) => {
           </Button>
         </Flex>
       </Flex>
-      <UserForm onClose={onClose} open={open} />
+      <UserForm
+        onClose={onClose}
+        open={open}
+        isTeacher={false}
+        onSuccess={handleFormSuccess}
+        editUser={editUser}
+        isEditMode={isEditMode}
+      />
       <Divider />
       <UserTable
         data={data.map((user) => ({
+          ...user,
           key: user.id,
-          name: user.name,
-          email: user.email,
-          phone: 0, // or user.phone if available and is a number
-          class: "", // or user.class if available
-          holyname: "", // or user.holyname if available
-          avatar: "", // or user.avatar if available
         }))}
+        onEdit={handleEditUser}
       />
     </div>
   );

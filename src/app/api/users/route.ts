@@ -16,23 +16,50 @@ export async function POST(request: Request) {
     const body = await request.json();
     const newUser = await prisma.user.create({
       data: {
-        username: body.username,
-        password: body.password,
         name: body.name,
         email: body.email,
-        phone: body.phone,
-        birthday: body.birthday ? new Date(body.birthday) : undefined,
+        phone:
+          body.phone !== undefined && body.phone !== null
+            ? String(body.phone)
+            : undefined,
+        birthday: body.birthday ? new Date(body.birthday) : null,
         address: body.address,
-        city: body.city,
+        class: body.class,
+        grade: body.grade,
         holyname: body.holyname,
         fathername: body.fathername,
+        fatherphone:
+          body.fatherphone !== undefined && body.fatherphone !== null
+            ? String(body.fatherphone)
+            : undefined,
         mothername: body.mothername,
+        motherphone:
+          body.motherphone !== undefined && body.motherphone !== null
+            ? String(body.motherphone)
+            : undefined,
         baptismplace: body.baptismplace,
-        baptismdate: body.baptismdate,
+        baptismdate: body.baptismdate ? new Date(body.baptismdate) : null,
         role: body.role,
         role_id: body.role_id,
-        isActive: body.isActive,
-        lastlogin: body.lastlogin ? new Date(body.lastlogin) : undefined,
+        title: body.title,
+        isActive: body.isActive ?? true,
+        lastlogin: body.lastlogin ? new Date(body.lastlogin) : null,
+        created_by: body.created_by,
+        updated_by: body.updated_by,
+        firstCommunionDate: body.firstCommunionDate
+          ? new Date(body.firstCommunionDate)
+          : null,
+        firstCommunionPlace: body.firstCommunionPlace,
+        confirmationDate: body.confirmationDate
+          ? new Date(body.confirmationDate)
+          : null,
+        confirmationPlace: body.confirmationPlace,
+        professionOfFaithDate: body.professionOfFaithDate
+          ? new Date(body.professionOfFaithDate)
+          : null,
+        professionOfFaithPlace: body.professionOfFaithPlace,
+        catechistLevel: body.catechistLevel,
+        avatar: body.avatar,
       },
     });
 

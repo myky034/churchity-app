@@ -48,16 +48,18 @@ model User {
   id           String    @id @default(uuid())
   name         String?
   email        String?
-  phone        Int?
+  phone        String?
   birthday     DateTime?
   address      String?
   class        String
   grade        String
   holyname     String?
   fathername   String?
+  fatherphone   String?
   mothername   String?
+  motherphone   String?
   baptismplace String?
-  baptismdate  String?
+  baptismdate  DateTime?
   role         String
   role_id      String
   title        String?
@@ -67,6 +69,14 @@ model User {
   updated_at   DateTime? @updatedAt
   created_by   String?
   updated_by   String?
+  firstCommunionDate DateTime?
+  firstCommunionPlace  String?
+  confirmationDate DateTime?
+  confirmationPlace  String?
+  professionOfFaithDate DateTime?
+  professionOfFaithPlace  String?
+  catechistLevel String?
+  avatar String?
 
   // Relations
   userRoles   UserRole[]
